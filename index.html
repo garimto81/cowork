@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카메라 파트 | 업무 개선 및 퀄리티 향상 기획서</title>
+    
+    <!-- Chosen Palette: Calm Neutral Professional -->
+    <!-- Application Structure Plan: 기획서의 논리적 흐름을 그대로 따르는 단일 페이지 대시보드 형식으로 설계했습니다. 사용자는 스크롤을 통해 '업무 방식 개선 → 현황 진단 → 핵심 과제 → 안정성 강화 → 운영 프로세스' 순으로 자연스럽게 계획을 파악할 수 있습니다. 각 섹션은 정보 카드, 시각적 다이어그램, 인터랙티브 탭과 같은 요소를 사용하여 정적인 문서보다 높은 가독성과 정보 전달력을 갖도록 구성했습니다. 이를 통해 사용자는 계획의 전체적인 맥락과 세부 실행 방안을 더 쉽게 이해하고 탐색할 수 있습니다. -->
+    <!-- Visualization & Content Choices: 
+        - MPP 이슈 분석: (목표: 정보/시각화) 제공된 캘린더 이미지를 기반으로 HTML/CSS 캘린더 다이어그램을 생성하여 일자별 이슈 발생 현황을 직관적으로 보여줍니다. 이를 통해 신속한 문제 해결 과정을 시각적으로 강조합니다.
+        - 시퀀스 체계: (목표: 정리/시각화) '일반 시퀀스'의 안정성과 '엣지 시퀀스'의 역량 강화를 피라미드 다이어그램으로 시각화했습니다. 안정적인 기반 위에 특수한 역량이 구축되는 구조를 명확히 전달합니다.
+        - 출장 운영 방식: (목표: 비교/시각화) 3가지 운영 방안을 간단한 조직도 형태의 다이어그램으로 시각화하여 각 방식의 구조적 차이를 한눈에 비교할 수 있도록 했습니다.
+        - 링크 및 상태 표시: (목표: 정보/상호작용) 모든 외부 자료는 클릭 가능한 카드로 만들고, 상태(완료/진행)를 일관된 디자인의 뱃지로 표시하여 진행 현황을 파악하기 쉽게 만들었습니다.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #F9FAFB; /* coolGray-50 */
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #111827; /* gray-900 */
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #E5E7EB; /* gray-200 */
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid #E5E7EB; /* gray-200 */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .tab-button {
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .tab-button.active {
+            background-color: #3B82F6; /* blue-500 */
+            color: white;
+        }
+        .tab-button:not(.active) {
+             background-color: #E5E7EB; /* gray-200 */
+             color: #374151; /* gray-700 */
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+        .calendar-day {
+            position: relative;
+            padding: 4px;
+            text-align: center;
+            font-size: 0.875rem;
+            height: 48px;
+            color: #6B7281;
+        }
+        .calendar-day.has-issue {
+            background-color: #DBEAFE;
+            color: #1E40AF;
+            border-radius: 4px;
+        }
+        .issue-badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background-color: #EF4444;
+            color: white;
+            border-radius: 9999px;
+            width: 16px;
+            height: 16px;
+            font-size: 0.75rem;
+            line-height: 16px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto max-w-5xl p-4 sm:p-6 md:p-8">
+
+        <header class="text-center my-8 md:my-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">카메라 파트 업무 개선 및 퀄리티 향상 기획서</h1>
+            <p class="mt-4 text-lg text-gray-600">데이터 기반 분석과 체계적인 실행 계획을 통한 방송 퀄리티 혁신</p>
+        </header>
+
+        <main class="space-y-16 md:space-y-24">
+            
+            <!-- 1. 업무 방식 개선 -->
+            <section id="work-method">
+                <h2 class="section-title">1. 업무 방식 개선</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg border border-gray-200">
+                        <h3 class="font-bold text-xl mb-3 text-gray-900">업무 현황 공유 및 관리</h3>
+                        <p class="text-gray-600 mb-4">Gantt 차트 기반의 플랫폼을 활용하여 모든 업무의 진행 상태를 투명하게 공유하여 협업 효율성을 극대화합니다.</p>
+                        <div class="flex space-x-4">
+                            <a href="https://garimto81.github.io/arrangement_web/" target="_blank" class="text-blue-600 hover:underline">업무 현황 플랫폼 →</a>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-gray-200">
+                        <h3 class="font-bold text-xl mb-3 text-gray-900">바이브 코딩 방식의 업무 결과물 생성</h3>
+                        <p class="text-gray-600 mb-4">모든 업무 결과물을 '바이브 코딩'을 활용한 웹페이지 형태로 제작하여, 링크 하나로 간편하게 공유하고 직관적인 이해를 돕습니다.</p>
+                        <div class="flex space-x-4">
+                             <a href="https://garimto81.github.io/junetour/" target="_blank" class="text-blue-600 hover:underline">결과물 생성 방식 →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. 현황 진단 및 비전 설계 -->
+            <section id="vision">
+                <h2 class="section-title">2. 현황 진단 및 비전 설계</h2>
+                 <div class="space-y-8">
+                    <div class="bg-white p-6 rounded-lg border border-gray-200">
+                         <h3 class="font-bold text-xl mb-3 text-gray-900">MPP 리뷰 및 기준점 설정</h3>
+                         <p class="text-gray-600 mb-4">지난 MPP 출장에서 발생한 13개 이슈를 모두 현장에서 해결하며 위기 대응 능력을 입증했습니다. 아래는 당시 이슈 발생 현황이며, 이슈가 모두 해결된 MPP 메인 이벤트를 향후 모든 방송의 품질 기준점(Benchmark)으로 설정합니다.</p>
+                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                            <div id="calendar-apr"></div>
+                            <div id="calendar-may"></div>
+                         </div>
+                         <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <p class="text-center text-gray-700">이러한 상세한 리뷰와 문제 해결 경험을 통해 도출된 결론을 바탕으로, 카메라 파트가 나아가야 할 방향성을 담은 '카메라 파트 비전 덱'을 설계했습니다.</p>
+                        </div>
+                         <div class="mt-4 flex flex-wrap gap-4 justify-center">
+                            <a href="https://garimto81.github.io/ggm/" target="_blank" class="text-blue-600 hover:underline">MPP 리뷰 결과물 →</a>
+                            <a href="https://garimto81.github.io/visiondeck_v1/" target="_blank" class="text-blue-600 hover:underline">카메라 파트 비전 덱 →</a>
+                         </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg border border-gray-200">
+                        <h3 class="font-bold text-xl mb-3 text-gray-900">완성된 시퀀스 체계</h3>
+                        <p class="text-gray-600 mb-6">시퀀스 체계의 핵심은 안정적인 '일반 시퀀스' 기반 위에 '엣지 시퀀스'로 역량을 강화하는 것입니다. MPP 메인 이벤트에서는 엣지 시퀀스가 사용되지 않았을 정도로 엄격한 기준을 적용합니다.</p>
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                             <div class="w-full md:w-1/2 flex flex-col items-center">
+                                <div class="w-48 h-10 bg-blue-500 text-white flex items-center justify-center rounded-t-lg font-bold shadow-md">엣지 시퀀스</div>
+                                <div class="w-64 h-24 bg-blue-200 text-blue-800 flex items-center justify-center rounded-b-lg font-semibold shadow-md">일반 시퀀스</div>
+                                <p class="text-sm mt-2 text-gray-500">▲ 안정성 기반, 역량 강화</p>
+                            </div>
+                            <div class="w-full md:w-1/2 space-y-3">
+                                <h4 class="font-semibold text-gray-700">엣지 시퀀스 발동 조건:</h4>
+                                <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                    <span class="text-blue-500 font-bold text-lg">1</span>
+                                    <div><strong class="text-gray-800">대회 프로필:</strong> 토너먼트의 파이널 테이블 등, 매우 중요한 시점</div>
+                                </div>
+                                 <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                    <span class="text-blue-500 font-bold text-lg">2</span>
+                                    <div><strong class="text-gray-800">캐릭터 프로필:</strong> 대중적 인지도가 높은 유명 플레이어 참여</div>
+                                </div>
+                                 <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                                    <span class="text-blue-500 font-bold text-lg">3</span>
+                                    <div><strong class="text-gray-800">핸드 프로필:</strong> A 등급 이상의 매우 강력한 핸드</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="bg-blue-50 p-6 rounded-lg border border-blue-200 text-center">
+                        <h3 class="font-bold text-xl mb-2 text-blue-800">핵심 목표: 최종 프레임 퀄리티 향상</h3>
+                        <p class="text-blue-700">안정된 운영 기반 위에, 콘텐츠의 시각적 완성도와 경쟁력을 극대화하는 것을 10월 SC 프로젝트의 단일 핵심 목표로 설정합니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. 핵심 과제 실행 계획 -->
+            <section id="action-plan">
+                <h2 class="section-title">3. 핵심 과제 실행 계획: 최종 프레임 퀄리티 향상</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card p-6 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-bold text-xl text-gray-900">컬러 사이언스 R&D</h3>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">LUT, S-Log 등 전문 기술 연구를 통해 주력 카메라 간의 색감을 통일하고 영상의 깊이와 선명도를 개선하여 일관성 있고 미학적인 화면을 구현합니다.</p>
+                        <div class="space-y-2 mt-auto">
+                             <a href="https://matthewkim129.github.io/CCMA2/" target="_blank" class="block text-blue-600 hover:underline">LUT 연구 결과물 →</a>
+                             <a href="https://kai-kim87.github.io/my-first-webpage/" target="_blank" class="block text-blue-600 hover:underline">FR7 카메라 연구 →</a>
+                             <a href="https://kai-kim87.github.io/my-third-webpage/" target="_blank" class="block text-blue-600 hover:underline">A7S3 카메라 연구 →</a>
+                        </div>
+                    </div>
+                    <div class="card p-6 flex flex-col">
+                         <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-bold text-xl text-gray-900">레퍼런스 모니터링 환경 구축</h3>
+                             <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">정확한 색상 기준을 제공하는 레퍼런스 모니터를 도입하여, 현장 작업자와 최종 시청자 간의 시각적 경험 차이를 최소화하고 최종 결과물의 퀄리티를 보장합니다.</p>
+                         <a href="https://matthewkim129.github.io/-/" target="_blank" class="text-blue-600 hover:underline mt-auto">모니터 연구 자료 →</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 4. 운영 안정성 강화 계획 -->
+            <section id="stability-plan">
+                <h2 class="section-title">4. 운영 안정성 강화 계획</h2>
+                <p class="text-gray-600 mb-6 text-center">핵심 과제와는 별개로, 현장 운용 인력의 스트레스와 오류율을 줄여 안정적인 방송 환경을 구축하기 위한 계획입니다.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <a href="https://garimto81.github.io/switcher/" target="_blank" class="card block p-6">
+                        <div class="flex justify-between items-start">
+                             <h3 class="font-bold text-xl mb-3 text-gray-900">하이브리드 스위처 시스템</h3>
+                             <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span>
+                        </div>
+                        <p class="text-gray-600">기본 핸드용과 핵심 핸드용 스위처를 분리 운영하여 컷팅 실수를 원천적으로 방지합니다.</p>
+                    </a>
+                    <a href="https://kai-kim87.github.io/my-second4-webpage/" target="_blank" class="card block p-6">
+                        <div class="flex justify-between items-start">
+                             <h3 class="font-bold text-xl mb-3 text-gray-900">탈리 시스템 도입</h3>
+                              <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span>
+                        </div>
+                        <p class="text-gray-600">On-Air 카메라를 명확히 표시하여 운영 실수를 방지하고 촬영자 간 소통을 강화합니다.</p>
+                    </a>
+                </div>
+            </section>
+            
+            <!-- 5. 출장 운영 프로세스 -->
+            <section id="process">
+                <h2 class="section-title">5. 출장 운영 프로세스 정립</h2>
+                <div class="bg-white p-6 rounded-lg border border-gray-200">
+                     <h3 class="font-bold text-xl mb-4 text-gray-900">피처 테이블 운영 방식 선택지</h3>
+                     <p class="text-gray-600 mb-4">피처 테이블 3개 운영 시, 상황에 따라 아래 방식 중 하나를 선택할 수 있습니다. 탭을 클릭하여 각 방식의 구조를 확인하세요.</p>
+                     
+                     <div class="mb-4 flex flex-wrap gap-2 border-b border-gray-200">
+                        <button class="tab-button active py-2 px-4 rounded-t-lg" data-tab="1">방식 1: 기존 유지</button>
+                        <button class="tab-button py-2 px-4 rounded-t-lg" data-tab="2">방식 2: GGP 통합</button>
+                        <button class="tab-button py-2 px-4 rounded-t-lg" data-tab="3">방식 3: 하이브리드</button>
+                     </div>
+                     
+                     <div id="tab-content" class="p-4 bg-gray-50 rounded-b-lg min-h-[180px] flex items-center justify-center">
+                        <div id="tab-panel-1" class="tab-panel w-full">
+                            <p class="text-gray-700 text-center font-semibold mb-4">메인 테이블은 외주(카라펫)에서 담당하고, 2개의 서브 테이블은 GGP에서 직접 컨트롤합니다.</p>
+                            <div class="flex justify-around items-start">
+                                <div class="flex flex-col items-center">
+                                    <div class="p-4 bg-purple-200 text-purple-800 rounded-lg font-bold mb-4">외주 (카라펫)</div>
+                                    <div class="flex gap-4">
+                                        <div class="p-3 bg-white border border-purple-300 rounded">메인 테이블</div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="p-4 bg-green-200 text-green-800 rounded-lg font-bold mb-4">GGP 컨트롤</div>
+                                    <div class="flex gap-4">
+                                        <div class="p-3 bg-white border border-green-300 rounded">서브 테이블 1</div>
+                                        <div class="p-3 bg-white border border-green-300 rounded">서브 테이블 2</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div id="tab-panel-2" class="tab-panel hidden w-full">
+                             <p class="text-gray-700 text-center font-semibold mb-4">3개의 피처 테이블 모두 GGP에서 직접 컨트롤합니다.</p>
+                            <div class="flex flex-col items-center">
+                                <div class="p-4 bg-green-200 text-green-800 rounded-lg font-bold mb-4">GGP 컨트롤 타워</div>
+                                <div class="flex gap-4">
+                                    <div class="p-3 bg-white border border-green-300 rounded">테이블 1</div>
+                                    <div class="p-3 bg-white border border-green-300 rounded">테이블 2</div>
+                                    <div class="p-3 bg-white border border-green-300 rounded">테이블 3</div>
+                                </div>
+                            </div>
+                        </div>
+                         <div id="tab-panel-3" class="tab-panel hidden w-full">
+                            <p class="text-gray-700 text-center font-semibold mb-4">GGP가 2개 테이블을, 외주사가 1개 테이블을 담당합니다.</p>
+                            <div class="flex justify-around items-start">
+                                <div class="flex flex-col items-center">
+                                    <div class="p-4 bg-green-200 text-green-800 rounded-lg font-bold mb-4">GGP 컨트롤</div>
+                                    <div class="flex gap-4">
+                                        <div class="p-3 bg-white border border-green-300 rounded">메인 테이블</div>
+                                        <div class="p-3 bg-white border border-green-300 rounded">서브 테이블 1</div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="p-4 bg-purple-200 text-purple-800 rounded-lg font-bold mb-4">외주 (카라펫)</div>
+                                    <div class="flex gap-4">
+                                        <div class="p-3 bg-white border border-purple-300 rounded">서브 테이블 2</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                     
+                     <div class="mt-6 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                        <h4 class="font-bold text-lg text-yellow-800">필수 요건: 현장 총괄 담당자 지정</h4>
+                        <p class="text-yellow-700 mt-2">어떤 방식을 선택하든, 현장의 모든 이슈를 해결하고 전체 방송의 톤앤매너와 샷 리스트를 통일하기 위해, 이를 총괄하는 '현장 총괄 담당자' 및 '커뮤니케이션 담당자' 지정이 필수적입니다.</p>
+                     </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-16 md:mt-24 py-6 border-t border-gray-200">
+            <p class="text-gray-500">Camera Department Initiative</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // MPP Issues Calendar Visualization
+            const issues = {
+                apr: { 29: 2, 30: 1 },
+                may: { 1: 2, 2: 1, 3: 4, 7: 1, 8: 1, 11: 1 }
+            };
+
+            function createCalendar(month, year, containerId, issueData) {
+                const container = document.getElementById(containerId);
+                const daysInMonth = new Date(year, month, 0).getDate();
+                const firstDay = new Date(year, month - 1, 1).getDay(); // 0=Sun, 1=Mon
+                
+                let html = `<h4 class="text-lg font-bold text-center mb-2 text-gray-800">${year}년 ${month}월</h4>`;
+                html += '<div class="calendar-grid text-xs text-gray-500 font-semibold mb-1"><div class="text-center">일</div><div class="text-center">월</div><div class="text-center">화</div><div class="text-center">수</div><div class="text-center">목</div><div class="text-center">금</div><div class="text-center">토</div></div>';
+                html += '<div class="calendar-grid">';
+
+                const dayOffset = firstDay === 0 ? 6 : firstDay - 1;
+
+                for (let i = 0; i < dayOffset; i++) {
+                    html += '<div></div>';
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    if (issueData[day]) {
+                        html += `<div class="calendar-day has-issue"><span>${day}</span><span class="issue-badge">${issueData[day]}</span></div>`;
+                    } else {
+                        html += `<div class="calendar-day">${day}</div>`;
+                    }
+                }
+                html += '</div>';
+                container.innerHTML = html;
+            }
+
+            createCalendar(4, 2025, 'calendar-apr', issues.apr);
+            createCalendar(5, 2025, 'calendar-may', issues.may);
+
+            // Tabs for Business Trip Process
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabNumber = button.dataset.tab;
+
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    button.classList.add('active');
+
+                    tabPanels.forEach(panel => {
+                        if (panel.id === `tab-panel-${tabNumber}`) {
+                            panel.classList.remove('hidden');
+                        } else {
+                            panel.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
