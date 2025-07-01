@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.05</title>
+    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.07</title>
     
     <!-- Chosen Palette: Calm Neutral Professional -->
     <!-- Application Structure Plan: 기획서의 논리적 흐름을 그대로 따르는 단일 페이지 대시보드 형식으로 설계했습니다. 사용자는 스크롤을 통해 '업무 방식 개선 → 현황 진단 → 핵심 과제 → 안정성 강화 → 운영 프로세스' 순으로 자연스럽게 계획을 파악할 수 있습니다. 각 섹션은 정보 카드, 시각적 다이어그램, 인터랙티브 탭과 같은 요소를 사용하여 정적인 문서보다 높은 가독성과 정보 전달력을 갖도록 구성했습니다. 이를 통해 사용자는 계획의 전체적인 맥락과 세부 실행 방안을 더 쉽게 이해하고 탐색할 수 있습니다. -->
@@ -44,17 +44,6 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
-        .tab-button {
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-        .tab-button.active {
-            background-color: #3B82F6; /* blue-500 */
-            color: white;
-        }
-        .tab-button:not(.active) {
-             background-color: #E5E7EB; /* gray-200 */
-             color: #374151; /* gray-700 */
-        }
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -89,7 +78,7 @@
         .roadmap-overlay {
             transition: opacity 0.3s ease-in-out;
         }
-        /* Styles for the new setup tabs */
+        /* Styles for setup & process tabs */
         .tab-btn {
             padding: 0.75rem 1rem;
             font-weight: 600;
@@ -124,6 +113,25 @@
         .ref-btn:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
+        .poker-table {
+            background-color: #054a29;
+            border: 8px solid #8d6e63; /* brown-400 */
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2), inset 0 0 10px rgba(0,0,0,0.3);
+        }
+        .table-surface {
+            background-color: #087f44;
+            width: 90%;
+            height: 90%;
+        }
+        .new-badge {
+            background-color: #f59e0b; /* amber-500 */
+            color: #1f2937; /* gray-800 */
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 9999px;
+            margin-left: 8px;
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -132,13 +140,13 @@
 
         <header class="text-center my-8 md:my-12">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 whitespace-nowrap">2025 WSOP SC CYPRUS 카메라 파트 전략</h1>
-            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.05</p>
+            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.07</p>
             <p class="mt-4 text-lg text-gray-600">5월 MPP 프로젝트 리뷰 기반, 10월 SC 프로젝트 실행 계획</p>
         </header>
 
         <main class="space-y-16 md:space-y-24">
 
-            <!-- 0. Today's Date Display -->
+            <!-- Today's Date Display -->
             <div class="mb-12 flex justify-center">
                 <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-200 flex items-center gap-4">
                     <svg class="w-8 h-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -151,436 +159,128 @@
                 </div>
             </div>
 
-            <!-- 1. 프로젝트 실행 로드맵 -->
+            <!-- 프로젝트 실행 로드맵 -->
             <section id="roadmap">
                 <h2 class="section-title">프로젝트 실행 로드맵</h2>
                 <div class="space-y-8 mt-8">
-                    <!-- June Card -->
                     <a href="https://garimto81.github.io/ggm/" target="_blank" class="block card overflow-hidden">
                         <div class="p-6 border-l-8 border-gray-500 flex flex-col sm:flex-row items-center gap-6">
-                            <div class="flex-shrink-0 text-center">
-                                <p class="text-4xl font-bold text-gray-700">6월</p>
-                                <p class="font-semibold text-gray-500">Phase 1</p>
-                            </div>
-                            <div class="flex-grow text-center sm:text-left">
-                                <h3 class="font-bold text-xl mb-2 text-gray-800">분석 및 기반 다지기</h3>
-                                <p class="text-gray-600">5월 MPP 출장에서 발생한 14가지 현장 이슈를 분석 및 해결하고, 연구를 통해 개선 지점을 도출하는 데 집중합니다.</p>
-                                <p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 문제점 명확화 및 개선 방향 수립</p>
-                            </div>
+                            <div class="flex-shrink-0 text-center"><p class="text-4xl font-bold text-gray-700">6월</p><p class="font-semibold text-gray-500">Phase 1</p></div>
+                            <div class="flex-grow text-center sm:text-left"><h3 class="font-bold text-xl mb-2 text-gray-800">분석 및 기반 다지기</h3><p class="text-gray-600">5월 MPP 출장에서 발생한 14가지 현장 이슈를 분석 및 해결하고, 연구를 통해 개선 지점을 도출하는 데 집중합니다.</p><p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 문제점 명확화 및 개선 방향 수립</p></div>
                         </div>
                     </a>
-                    <!-- July Card -->
                     <a href="https://garimto81.github.io/arrangement_web/" target="_blank" class="block card overflow-hidden">
                         <div class="p-6 border-l-8 border-blue-500 flex flex-col sm:flex-row items-center gap-6">
-                             <div class="flex-shrink-0 text-center">
-                                <p class="text-4xl font-bold text-blue-700">7월</p>
-                                <p class="font-semibold text-blue-500">Phase 2</p>
-                            </div>
-                            <div class="flex-grow text-center sm:text-left">
-                                <h3 class="font-bold text-xl mb-2 text-blue-800">퀄리티 집중 강화</h3>
-                                <p class="text-gray-600">프레임 퀄리티 R&D에 집중하여, 외부 프로덕션(카라펫)과 대등하거나 그 이상의 결과물을 도출하는 것을 목표로 합니다.</p>
-                                 <p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 퀄리티 비교 우위 확보 및 결론 도출</p>
-                            </div>
+                             <div class="flex-shrink-0 text-center"><p class="text-4xl font-bold text-blue-700">7월</p><p class="font-semibold text-blue-500">Phase 2</p></div>
+                            <div class="flex-grow text-center sm:text-left"><h3 class="font-bold text-xl mb-2 text-blue-800">퀄리티 집중 강화</h3><p class="text-gray-600">프레임 퀄리티 R&D에 집중하여, 외부 프로덕션(카라펫)과 대등하거나 그 이상의 결과물을 도출하는 것을 목표로 합니다.</p><p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 퀄리티 비교 우위 확보 및 결론 도출</p></div>
                         </div>
                     </a>
-                    <!-- August Card -->
                     <div class="card p-6 border-l-8 border-green-500 flex flex-col sm:flex-row items-center gap-6 relative group">
-                         <div class="flex-shrink-0 text-center">
-                            <p class="text-4xl font-bold text-green-700">8월</p>
-                            <p class="font-semibold text-green-500">Phase 3</p>
-                        </div>
-                        <div class="flex-grow text-center sm:text-left">
-                            <h3 class="font-bold text-xl mb-2 text-green-800">운영 시스템 안정화</h3>
-                            <p class="text-gray-600">현장 오류율을 최소화하기 위해 탈리, 하이브리드 스위처 등 안정성 강화 시스템 도입 및 테스트를 완료합니다.</p>
-                            <p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 핵심 안정화 시스템 도입 및 검증</p>
-                        </div>
+                         <div class="flex-shrink-0 text-center"><p class="text-4xl font-bold text-green-700">8월</p><p class="font-semibold text-green-500">Phase 3</p></div>
+                        <div class="flex-grow text-center sm:text-left"><h3 class="font-bold text-xl mb-2 text-green-800">운영 시스템 안정화</h3><p class="text-gray-600">현장 오류율을 최소화하기 위해 탈리, 하이브리드 스위처 등 안정성 강화 시스템 도입 및 테스트를 완료합니다.</p><p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 핵심 안정화 시스템 도입 및 검증</p></div>
                         <div class="roadmap-overlay absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 rounded-r-lg flex flex-col justify-center items-center opacity-0 group-hover:opacity-100">
                              <a href="https://garimto81.github.io/switcher/" target="_blank" class="text-white font-bold text-lg hover:underline p-2">하이브리드 스위처 시스템 →</a>
                              <a href="https://kai-kim87.github.io/my-second4-webpage/" target="_blank" class="text-white font-bold text-lg hover:underline p-2">탈리 시스템 도입 →</a>
                         </div>
                     </div>
-                    <!-- September Card -->
                     <div class="card p-6 border-l-8 border-purple-500 flex flex-col sm:flex-row items-center gap-6">
-                         <div class="flex-shrink-0 text-center">
-                            <p class="text-4xl font-bold text-purple-700">9월</p>
-                            <p class="font-semibold text-purple-500">Phase 4</p>
-                        </div>
-                        <div class="flex-grow text-center sm:text-left">
-                            <h3 class="font-bold text-xl mb-2 text-purple-800">리허설 및 숙련도 향상</h3>
-                            <p class="text-gray-600">실제와 같은 환경에서 전체 시스템 통합 리허설을 진행하여 팀원들의 숙련도를 최고 수준으로 끌어올립니다.</p>
-                            <p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 최종 워크플로우 확립 및 팀 숙련도 극대화</p>
-                        </div>
+                         <div class="flex-shrink-0 text-center"><p class="text-4xl font-bold text-purple-700">9월</p><p class="font-semibold text-purple-500">Phase 4</p></div>
+                        <div class="flex-grow text-center sm:text-left"><h3 class="font-bold text-xl mb-2 text-purple-800">리허설 및 숙련도 향상</h3><p class="text-gray-600">실제와 같은 환경에서 전체 시스템 통합 리허설을 진행하여 팀원들의 숙련도를 최고 수준으로 끌어올립니다.</p><p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 최종 워크플로우 확립 및 팀 숙련도 극대화</p></div>
                     </div>
-                    <!-- October Card -->
                     <div class="card p-6 border-l-8 border-red-500 flex flex-col sm:flex-row items-center gap-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-24 h-24 bg-red-500 text-white rounded-full flex flex-col items-center justify-center shadow-lg">
-                                <span class="text-4xl font-bold">10월</span>
-                                <span class="font-semibold">D-DAY</span>
-                            </div>
-                        </div>
-                        <div class="flex-grow text-center sm:text-left">
-                            <h3 class="font-bold text-2xl mb-2 text-red-800">WSOP SC CYPRUS 실행</h3>
-                            <p class="text-gray-600">그동안 준비한 모든 시스템과 역량을 총동원하여 최고의 결과물을 만들어냅니다.</p>
-                            <div class="mt-3 text-sm">
-                                <p><span class="font-semibold text-gray-700">전체 출장 일정:</span> 10/9 ~ 10/21</p>
-                                <p><span class="font-semibold text-gray-700">메인 이벤트:</span> 10/16 ~ 10/21</p>
-                            </div>
-                        </div>
+                        <div class="flex-shrink-0"><div class="w-24 h-24 bg-red-500 text-white rounded-full flex flex-col items-center justify-center shadow-lg"><span class="text-4xl font-bold">10월</span><span class="font-semibold">D-DAY</span></div></div>
+                        <div class="flex-grow text-center sm:text-left"><h3 class="font-bold text-2xl mb-2 text-red-800">WSOP SC CYPRUS 실행</h3><p class="text-gray-600">그동안 준비한 모든 시스템과 역량을 총동원하여 최고의 결과물을 만들어냅니다.</p><div class="mt-3 text-sm"><p><span class="font-semibold text-gray-700">전체 출장 일정:</span> 10/9 ~ 10/21</p><p><span class="font-semibold text-gray-700">메인 이벤트:</span> 10/16 ~ 10/21</p></div></div>
                     </div>
                 </div>
             </section>
             
-            <!-- NEW: Core Strategy Section -->
+            <!-- 핵심 전략 -->
             <section id="strategy">
                 <h2 class="section-title text-center">핵심 전략: 이중적 "엣지" 구현</h2>
                 <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    <div class="card p-8 rounded-xl shadow-lg">
-                        <div class="flex items-center mb-4">
-                            <span class="text-3xl mr-4">💎</span>
-                            <h3 class="text-2xl font-bold text-gray-800">보편적 엣지 (Universal Edge)</h3>
-                        </div>
-                        <p class="text-gray-600 mb-2 font-semibold">"정적 화면의 정점"</p>
-                        <p class="text-gray-600">
-                            플레이어 미드 샷을 포함한 모든 기본 샷에서 일관되게 구현되는 최고 수준의 A컷. <br> 모든 샷을 완벽하게 계산된 사진 작품처럼 구성하여, <br> 방송 전체의 기본 품질을 격상시키고 지속적인 몰입감을 제공합니다.
-                        </p>
-                    </div>
-                    <div class="card p-8 rounded-xl shadow-lg relative group overflow-hidden">
-                        <div class="flex items-center mb-4">
-                            <span class="text-3xl mr-4">🔥</span>
-                            <h3 class="text-2xl font-bold text-gray-800">킥 엣지 (Kick Edge)</h3>
-                        </div>
-                        <p class="text-gray-600 mb-2 font-semibold">"핵심 핸드의 다이나믹한 연출"</p>
-                        <p class="text-gray-600">
-                            대회의 가장 중요한 분기점에서 펼쳐지는 특별한 숏 시퀀스. <br> 빅팟 올인, 중요 인물의 탈락 위기 등 주요 순간에 극적인 연출을 도입하여 시청자에게 강렬한 드라마와 감동을 선사합니다.
-                        </p>
-                        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center space-y-4 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/QP5TZGTR3B8?start=28293&autoplay=1&mute=1">▶ 레퍼런스 #01</button>
-                            <button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/6kdfG00zYCI?start=8142&autoplay=1&mute=1">▶ 레퍼런스 #02</button>
-                        </div>
-                    </div>
+                    <div class="card p-8 rounded-xl shadow-lg"><div class="flex items-center mb-4"><span class="text-3xl mr-4">💎</span><h3 class="text-2xl font-bold text-gray-800">보편적 엣지 (Universal Edge)</h3></div><p class="text-gray-600 mb-2 font-semibold">"정적 화면의 정점"</p><p class="text-gray-600">플레이어 미드 샷을 포함한 모든 기본 샷에서 일관되게 구현되는 최고 수준의 A컷. <br> 모든 샷을 완벽하게 계산된 사진 작품처럼 구성하여, <br> 방송 전체의 기본 품질을 격상시키고 지속적인 몰입감을 제공합니다.</p></div>
+                    <div class="card p-8 rounded-xl shadow-lg relative group overflow-hidden"><div class="flex items-center mb-4"><span class="text-3xl mr-4">🔥</span><h3 class="text-2xl font-bold text-gray-800">킥 엣지 (Kick Edge)</h3></div><p class="text-gray-600 mb-2 font-semibold">"핵심 핸드의 다이나믹한 연출"</p><p class="text-gray-600">대회의 가장 중요한 분기점에서 펼쳐지는 특별한 숏 시퀀스. <br> 빅팟 올인, 중요 인물의 탈락 위기 등 주요 순간에 극적인 연출을 도입하여 시청자에게 강렬한 드라마와 감동을 선사합니다.</p><div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center space-y-4 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"><button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/QP5TZGTR3B8?start=28293&autoplay=1&mute=1">▶ 레퍼런스 #01</button><button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/6kdfG00zYCI?start=8142&autoplay=1&mute=1">▶ 레퍼런스 #02</button></div></div>
                 </div>
             </section>
 
-            <!-- Equipment Setup Evolution Section -->
+            <!-- 장비 구성 진화 -->
             <section id="setup">
                 <h2 class="section-title text-center">장비 구성 진화: MPP → WSOP SC</h2>
                 <div class="bg-white p-4 sm:p-8 rounded-xl shadow-lg border border-gray-200">
                     <p class="text-center text-gray-600 mb-8">5월 MPP 프로젝트의 경험을 바탕으로, 10월 WSOP SC에서는 카메라 시스템을 단계적으로 발전시켜 A컷 품질을 극대화합니다.</p>
-                    
                     <div class="flex justify-center border-b border-gray-200 mb-8">
-                        <button id="tab-may-initial" class="tab-btn active">5월 MPP 초기</button>
-                        <button id="tab-may-final" class="tab-btn">5월 MPP 후기</button>
-                        <button id="tab-oct" class="tab-btn">10월 WSOP SC</button>
+                        <button class="setup-tab-btn tab-btn active" data-target="panel-may-initial">5월 MPP 초기</button>
+                        <button class="setup-tab-btn tab-btn" data-target="panel-may-final">5월 MPP 후기</button>
+                        <button class="setup-tab-btn tab-btn" data-target="panel-oct">10월 WSOP SC</button>
                     </div>
-                    
-                    <!-- 5월 MPP 초기 패널 -->
-                    <div id="panel-may-initial" class="setup-panel">
-                         <p class="text-center font-semibold text-gray-700 mb-4">기본 8캠 시스템으로 안정적 운영에 집중</p>
-                        <div class="relative max-w-4xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8">
-                            <div class="absolute w-full h-full flex items-center justify-center">
-                                <div class="w-[60%] h-[55%] bg-gray-500 border-8 border-gray-700 rounded-[50%] flex items-center justify-center text-white font-bold relative">
-                                    <div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div>
-                                    <div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div>
-                                </div>
-                            </div>
-                            <div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div>
-                            <div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div>
-                            <div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div>
-                            <div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div>
-                            <div class="absolute top-0 right-[20%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div>
-                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div>
-                        </div>
-                         <ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-3xl mx-auto">
-                            <li>📹 Sony FR7 (PTZ) x 4</li>
-                            <li>📹 보드 캠 (FR7) x 1</li>
-                            <li>📷 탑 캠 (Overhead) x 1</li>
-                            <li>🎥 프리 캠 (Freelance) x 1</li>
-                            <li>🎥 풀 샷 캠 (Full Shot) x 1</li>
-                            <li class="font-bold col-span-full sm:col-auto">총 8대 / 테이블</li>
-                        </ul>
-                    </div>
-
-                    <!-- 5월 MPP 후기 패널 -->
-                    <div id="panel-may-final" class="setup-panel hidden">
-                         <p class="text-center font-semibold text-gray-700 mb-4">인물 고정 캠 추가로 A컷 안정화</p>
-                        <div class="relative max-w-4xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8">
-                            <div class="absolute w-full h-full flex items-center justify-center">
-                                <div class="w-[60%] h-[55%] bg-gray-500 border-8 border-gray-700 rounded-[50%] flex items-center justify-center text-white font-bold relative">
-                                    <div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div>
-                                    <div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div>
-                                </div>
-                            </div>
-                            <div class="absolute top-[20%] left-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-gray-400">🎥</div><span class="text-xs font-semibold">인물 고정 캠</span></div>
-                            <div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div>
-                            <div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div>
-                            <div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div>
-                            <div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div>
-                            <div class="absolute top-0 right-[20%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div>
-                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div>
-                        </div>
-                         <ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-3xl mx-auto">
-                            <li>📹 Sony FR7 (PTZ) x 4</li>
-                            <li>🎥 인물 고정 캠 x 1</li>
-                            <li>📹 보드 캠 (FR7) x 1</li>
-                            <li>📷 탑 캠 (Overhead) x 1</li>
-                            <li>🎥 프리 캠 (Freelance) x 1</li>
-                            <li>🎥 풀 샷 캠 (Full Shot) x 1</li>
-                            <li class="font-bold col-span-full sm:col-auto">총 9대 / 테이블</li>
-                        </ul>
-                    </div>
-
-                    <!-- 10월 WSOP SC 패널 -->
-                    <div id="panel-oct" class="setup-panel hidden">
-                        <p class="text-center font-semibold text-gray-700 mb-4">전체 FR7 시스템으로 업그레이드하여 퀄리티 표준화 (총 10캠)</p>
-                         <div class="relative max-w-4xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8">
-                            <div class="absolute w-full h-full flex items-center justify-center">
-                                <div class="w-[60%] h-[55%] bg-blue-800 border-8 border-yellow-400 rounded-[50%] flex items-center justify-center text-white font-bold relative">
-                                    <div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div>
-                                    <div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div>
-                                </div>
-                            </div>
-                            <div class="absolute top-[20%] left-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #5</span></div>
-                            <div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div>
-                            <div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div>
-                            <div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div>
-                            <div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div>
-                            <div class="absolute top-[20%] right-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #6</span></div>
-                            <div class="absolute top-0 right-[25%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div>
-                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div>
-                        </div>
-                         <ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-3xl mx-auto">
-                            <li>📹 Sony FR7 (PTZ) x 6</li>
-                            <li>📹 보드 캠 (FR7) x 1</li>
-                            <li>📷 탑 캠 (Overhead) x 1</li>
-                            <li>🎥 프리 캠 (Freelance) x 1</li>
-                            <li>🎥 풀 샷 캠 (Full Shot) x 1</li>
-                            <li class="font-bold col-span-full sm:col-auto">총 10대 / 테이블</li>
-                        </ul>
-                    </div>
-
+                    <div id="panel-may-initial" class="setup-panel"><p class="text-center font-semibold text-gray-700 mb-4">기본 8캠 시스템으로 안정적 운영에 집중</p><div class="relative max-w-4xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8"><div class="absolute w-full h-full flex items-center justify-center"><div class="w-[60%] h-[55%] bg-gray-500 border-8 border-gray-700 rounded-[50%] flex items-center justify-center text-white font-bold relative"><div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div><div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div></div></div><div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div><div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div><div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div><div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div><div class="absolute top-0 right-[20%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div><div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div></div><ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-3xl mx-auto"><li>📹 Sony FR7 (PTZ) x 4</li><li>📹 보드 캠 (FR7) x 1</li><li>📷 탑 캠 (Overhead) x 1</li><li>🎥 프리 캠 (Freelance) x 1</li><li>🎥 풀 샷 캠 (Full Shot) x 1</li><li class="font-bold col-span-full sm:col-auto">총 8대 / 테이블</li></ul></div>
+                    <div id="panel-may-final" class="setup-panel hidden"><p class="text-center font-semibold text-gray-700 mb-4">인물 고정 캠 추가로 A컷 안정화</p><div class="relative max-w-4xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8"><div class="absolute w-full h-full flex items-center justify-center"><div class="w-[60%] h-[55%] bg-gray-500 border-8 border-gray-700 rounded-[50%] flex items-center justify-center text-white font-bold relative"><div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div><div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div></div></div><div class="absolute top-[20%] left-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-gray-400">🎥</div><span class="text-xs font-semibold">인물 고정 캠</span></div><div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div><div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div><div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div><div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div><div class="absolute top-0 right-[20%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div><div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div></div><ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-3xl mx-auto"><li>📹 Sony FR7 (PTZ) x 4</li><li>🎥 인물 고정 캠 x 1</li><li>📹 보드 캠 (FR7) x 1</li><li>📷 탑 캠 (Overhead) x 1</li><li>🎥 프리 캠 (Freelance) x 1</li><li>🎥 풀 샷 캠 (Full Shot) x 1</li><li class="font-bold col-span-full sm:col-auto">총 9대 / 테이블</li></ul></div>
+                    <div id="panel-oct" class="setup-panel hidden"><p class="text-center font-semibold text-gray-700 mb-4">전체 FR7 시스템으로 업그레이드하여 퀄리티 표준화 (총 10캠)</p><div class="relative max-w-4xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8"><div class="absolute w-full h-full flex items-center justify-center"><div class="w-[60%] h-[55%] bg-blue-800 border-8 border-yellow-400 rounded-[50%] flex items-center justify-center text-white font-bold relative"><div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div><div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div></div></div><div class="absolute top-[20%] left-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #5</span></div><div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div><div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div><div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div><div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div><div class="absolute top-[20%] right-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #6</span></div><div class="absolute top-0 right-[25%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div><div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div></div><ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-3xl mx-auto"><li>📹 Sony FR7 (PTZ) x 6</li><li>📹 보드 캠 (FR7) x 1</li><li>📷 탑 캠 (Overhead) x 1</li><li>🎥 프리 캠 (Freelance) x 1</li><li>🎥 풀 샷 캠 (Full Shot) x 1</li><li class="font-bold col-span-full sm:col-auto">총 10대 / 테이블</li></ul></div>
                 </div>
             </section>
             
-            <!-- Other sections follow -->
-
-            <section id="current-status">
-                <h2 class="section-title">현재 진행 과제 (<span id="current-date-title"></span> 기준)</h2>
-                <p class="text-gray-600 mb-6 text-center">로드맵에 따라, 10월 WSOP SC CYPRUS 프로젝트 성공을 위해 아래 과제들을 중점적으로 진행하고 있습니다.</p>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="card p-6 bg-blue-50 border-blue-200">
-                        <h3 class="font-bold text-xl mb-4 text-blue-800">핵심 목표: 최종 프레임 퀄리티 향상</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-center gap-3"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span><span>컬러 사이언스 R&D</span></li>
-                            <li class="flex items-center gap-3"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span><span>레퍼런스 모니터링 환경 구축</span></li>
-                            <li class="flex items-center gap-3"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span><span>장비 테스트 (렌즈 선별)</span></li>
-                        </ul>
-                    </div>
-                     <div class="card p-6 bg-green-50 border-green-200">
-                        <h3 class="font-bold text-xl mb-4 text-green-800">운영 안정성 강화</h3>
-                        <ul class="space-y-3">
-                             <li class="flex items-center gap-3"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span><span>하이브리드 스위처 시스템</span></li>
-                             <li class="flex items-center gap-3"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span><span>탈리 시스템 도입</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section id="work-method">
-                <h2 class="section-title">업무 방식 개선</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-6 rounded-lg border border-gray-200">
-                        <h3 class="font-bold text-xl mb-3 text-gray-900">업무 현황 공유 및 관리</h3>
-                        <p class="text-gray-600 mb-4">Gantt 차트 기반의 플랫폼을 활용하여 모든 업무의 진행 상태를 투명하게 공유하여 협업 효율성을 극대화합니다.</p>
-                        <div class="flex space-x-4">
-                            <a href="https://garimto81.github.io/arrangement_web/" target="_blank" class="text-blue-600 hover:underline">업무 현황 플랫폼 →</a>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg border border-gray-200">
-                        <h3 class="font-bold text-xl mb-3 text-gray-900">바이브 코딩 방식의 업무 결과물 생성</h3>
-                        <p class="text-gray-600 mb-4">모든 업무 결과물을 '바이브 코딩'을 활용한 웹페이지 형태로 제작하여, 링크 하나로 간편하게 공유하고 직관적인 이해를 돕습니다.</p>
-                        <div class="flex space-x-4">
-                             <a href="https://garimto81.github.io/junetour/" target="_blank" class="text-blue-600 hover:underline">결과물 생성 방식 →</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="vision">
-                <h2 class="section-title">현황 진단 및 비전 설계</h2>
-                 <div class="space-y-8">
-                    <div class="bg-white p-6 rounded-lg border border-gray-200">
-                         <h3 class="font-bold text-xl mb-3 text-gray-900">MPP 리뷰 및 기준점 설정</h3>
-                         <p class="text-gray-600 mb-4">지난 MPP 출장에서 발생한 13개 이슈를 모두 현장에서 해결하며 위기 대응 능력을 입증했습니다. 아래는 당시 이슈 발생 현황이며, 이슈가 모두 해결된 MPP 메인 이벤트를 향후 모든 방송의 품질 기준점(Benchmark)으로 설정합니다.</p>
-                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
-                            <div id="calendar-apr"></div>
-                            <div id="calendar-may"></div>
-                         </div>
-                         <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                             <p class="text-center text-gray-700">이러한 상세한 리뷰와 문제 해결 경험을 통해 도출된 결론을 바탕으로, 카메라 파트가 나아가야 할 방향성을 담은 '카메라 파트 비전 덱'을 설계했습니다.</p>
-                         </div>
-                         <div class="mt-4 flex flex-wrap gap-4 justify-center">
-                             <a href="https://garimto81.github.io/ggm/" target="_blank" class="text-blue-600 hover:underline">MPP 리뷰 결과물 →</a>
-                             <a href="https://garimto81.github.io/visiondeck_v1/" target="_blank" class="text-blue-600 hover:underline">카메라 파트 비전 덱 →</a>
-                         </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg border border-gray-200">
-                        <h3 class="font-bold text-xl mb-3 text-gray-900">완성된 시퀀스 체계</h3>
-                        <p class="text-gray-600 mb-6">시퀀스 체계의 핵심은 안정적인 '일반 시퀀스' 기반 위에 '엣지 시퀀스'로 역량을 강화하는 것입니다. MPP 메인 이벤트에서는 엣지 시퀀스가 사용되지 않았을 정도로 엄격한 기준을 적용합니다.</p>
-                        <div class="flex flex-col md:flex-row gap-8 items-center">
-                             <div class="w-full md:w-1/2 flex flex-col items-center">
-                                 <div class="w-48 h-10 bg-blue-500 text-white flex items-center justify-center rounded-t-lg font-bold shadow-md">엣지 시퀀스</div>
-                                 <div class="w-64 h-24 bg-blue-200 text-blue-800 flex items-center justify-center rounded-b-lg font-semibold shadow-md">일반 시퀀스</div>
-                                 <p class="text-sm mt-2 text-gray-500">▲ 안정성 기반, 역량 강화</p>
-                             </div>
-                             <div class="w-full md:w-1/2 space-y-3">
-                                 <h4 class="font-semibold text-gray-700">엣지 시퀀스 발동 조건:</h4>
-                                 <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                                     <span class="text-blue-500 font-bold text-lg">1</span>
-                                     <div><strong class="text-gray-800">대회 프로필:</strong> 토너먼트의 파이널 테이블 등, 매우 중요한 시점</div>
-                                 </div>
-                                  <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                                     <span class="text-blue-500 font-bold text-lg">2</span>
-                                     <div><strong class="text-gray-800">캐릭터 프로필:</strong> 대중적 인지도가 높은 유명 플레이어 참여</div>
-                                 </div>
-                                  <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                                     <span class="text-blue-500 font-bold text-lg">3</span>
-                                     <div><strong class="text-gray-800">핸드 프로필:</strong> A 등급 이상의 매우 강력한 핸드</div>
-                                 </div>
-                             </div>
-                        </div>
-                    </div>
-                     <div class="bg-blue-50 p-6 rounded-lg border border-blue-200 text-center">
-                        <h3 class="font-bold text-xl mb-2 text-blue-800">핵심 목표: 최종 프레임 퀄리티 향상</h3>
-                        <p class="text-blue-700">안정된 운영 기반 위에, 콘텐츠의 시각적 완성도와 경쟁력을 극대화하는 것을 10월 SC 프로젝트의 단일 핵심 목표로 설정합니다.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="action-plan">
-                <h2 class="section-title">핵심 과제 실행 계획: 최종 프레임 퀄리티 향상</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card p-6 flex flex-col">
-                        <div class="flex justify-between items-start mb-3">
-                            <h3 class="font-bold text-xl text-gray-900">컬러 사이언스 R&D</h3>
-                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">LUT, S-Log 등 전문 기술 연구를 통해 주력 카메라 간의 색감을 통일하고 영상의 깊이와 선명도를 개선하여 일관성 있고 미학적인 화면을 구현합니다.</p>
-                        <div class="space-y-2 mt-auto">
-                             <a href="https://matthewkim129.github.io/CCMA2/" target="_blank" class="block text-blue-600 hover:underline">LUT 연구 결과물 →</a>
-                             <a href="https://kai-kim87.github.io/my-first-webpage/" target="_blank" class="block text-blue-600 hover:underline">FR7 카메라 연구 →</a>
-                             <a href="https://kai-kim87.github.io/my-third-webpage/" target="_blank" class="block text-blue-600 hover:underline">A7S3 카메라 연구 →</a>
-                        </div>
-                    </div>
-                    <div class="card p-6 flex flex-col">
-                         <div class="flex justify-between items-start mb-3">
-                            <h3 class="font-bold text-xl text-gray-900">레퍼런스 모니터링 환경 구축</h3>
-                             <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">정확한 색상 기준을 제공하는 레퍼런스 모니터를 도입하여, 현장 작업자와 최종 시청자 간의 시각적 경험 차이를 최소화하고 최종 결과물의 퀄리티를 보장합니다.</p>
-                         <a href="https://matthewkim129.github.io/-/" target="_blank" class="text-blue-600 hover:underline mt-auto">모니터 연구 자료 →</a>
-                    </div>
-                    <div class="card p-6 flex flex-col">
-                         <div class="flex justify-between items-start mb-3">
-                            <h3 class="font-bold text-xl text-gray-900">장비 테스트</h3>
-                             <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">바디별 카메라 렌즈를 교체하며 퀄리티를 체크하고, 가장 높은 성능의 렌즈 조합을 선별하는 작업을 진행합니다.</p>
-                         <div class="mt-auto">
-                            <span class="font-semibold text-gray-700">테스트 바디:</span>
-                            <span class="text-gray-600">FR7, A7S3, ENG</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="stability-plan">
-                <h2 class="section-title">운영 안정성 강화 계획</h2>
-                <p class="text-gray-600 mb-6 text-center">핵심 과제와는 별개로, 현장 운용 인력의 스트레스와 오류율을 줄여 안정적인 방송 환경을 구축하기 위한 계획입니다.</p>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <a href="https://garimto81.github.io/switcher/" target="_blank" class="card block p-6">
-                        <div class="flex justify-between items-start">
-                             <h3 class="font-bold text-xl mb-3 text-gray-900">하이브리드 스위처 시스템</h3>
-                             <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span>
-                        </div>
-                        <p class="text-gray-600">기본 핸드용과 핵심 핸드용 스위처를 분리 운영하여 컷팅 실수를 원천적으로 방지합니다.</p>
-                    </a>
-                    <a href="https://kai-kim87.github.io/my-second4-webpage/" target="_blank" class="card block p-6">
-                        <div class="flex justify-between items-start">
-                             <h3 class="font-bold text-xl mb-3 text-gray-900">탈리 시스템 도입</h3>
-                              <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">진행중</span>
-                        </div>
-                        <p class="text-gray-600">On-Air 카메라를 명확히 표시하여 운영 실수를 방지하고 촬영자 간 소통을 강화합니다.</p>
-                    </a>
-                </div>
-            </section>
-            
+            <!-- 출장 운영 프로세스 정립 -->
             <section id="process">
-                <h2 class="section-title">출장 운영 프로세스 정립</h2>
-                <div class="bg-white p-6 rounded-lg border border-gray-200">
-                     <h3 class="font-bold text-xl mb-4 text-gray-900">피처 테이블 운영 방식 선택지</h3>
-                     <p class="text-gray-600 mb-4">피처 테이블 3개 운영 시, 상황에 따라 아래 방식 중 하나를 선택할 수 있습니다. 탭을 클릭하여 각 방식의 구조를 확인하세요.</p>
-                     
-                     <div class="mb-4 flex flex-wrap gap-2 border-b border-gray-200">
-                        <button class="tab-button active" data-tab="1">방식 1: 기존 유지</button>
-                        <button class="tab-button" data-tab="2">방식 2: GGP 통합</button>
-                        <button class="tab-button" data-tab="3">방식 3: 하이브리드</button>
-                     </div>
-                     
-                     <div id="tab-content" class="p-4 bg-gray-50 rounded-b-lg min-h-[180px] flex items-center justify-center">
-                        <div id="op-panel-1" class="op-panel w-full">
-                            <p class="text-gray-700 text-center font-semibold mb-4">메인 테이블은 외주(카라펫)에서 담당하고, 2개의 서브 테이블은 GGP에서 직접 컨트롤합니다.</p>
-                            <div class="flex justify-around items-start">
-                                <div class="flex flex-col items-center">
-                                    <div class="p-4 bg-purple-200 text-purple-800 rounded-lg font-bold mb-4">외주 (카라펫)</div>
-                                    <div class="flex gap-4">
-                                        <div class="p-3 bg-white border border-purple-300 rounded">메인 테이블</div>
-                                    </div>
+                <h2 class="section-title text-center">출장 운영 시나리오</h2>
+                <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-gray-200">
+                    <p class="text-center text-gray-600 mb-8">각 시나리오를 선택하여 인원 편제와 담당 공간 구성을 확인하세요.</p>
+                    <div class="flex flex-wrap justify-center border-b border-gray-200 mb-8">
+                        <button class="process-tab-btn tab-btn active" data-target="option1-process">옵션 1: 5월 MPP 기반</button>
+                        <button class="process-tab-btn tab-btn" data-target="option2-process">옵션 2: GGP 전체 통제</button>
+                        <button class="process-tab-btn tab-btn" data-target="option3-process">옵션 3: 하이브리드</button>
+                    </div>
+
+                    <!-- Option 1 Panel -->
+                    <div id="option1-process" class="process-panel">
+                        <div class="border-2 border-indigo-200 rounded-lg p-6 bg-indigo-50/50">
+                            <h3 class="text-2xl font-bold text-center mb-8 text-indigo-700">옵션 1: 5월 MPP 세팅 기반</h3>
+                            <div class="grid lg:grid-cols-2 gap-10 items-start">
+                                <div>
+                                    <h4 class="font-bold text-lg mb-4 text-center text-gray-800">인원 구성 비교</h4>
+                                    <div class="bg-white rounded-lg p-4 shadow"><table class="w-full text-left text-sm"><thead><tr class="border-b border-gray-300"><th class="py-2 font-semibold text-gray-700">역할</th><th class="py-2 font-semibold text-center text-cyan-600">5월 MPP</th><th class="py-2 font-semibold text-center text-amber-600">10월 WSOP SC</th></tr></thead><tbody class="divide-y divide-gray-200"><tr><td class="py-3">PM (커뮤니케이션)</td><td class="py-3 text-center font-semibold">1명</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3">현장 운영</td><td class="py-3 text-center font-semibold">2명</td><td class="py-3 text-center font-semibold">2명</td></tr><tr><td class="py-3">컨트롤룸</td><td class="py-3 text-center font-semibold">4명</td><td class="py-3 text-center font-semibold">4명</td></tr><tr><td class="py-3 flex items-center">컨트롤룸 커뮤니케이션 <span class="new-badge">NEW</span></td><td class="py-3 text-center text-gray-400">-</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3 flex items-center">소프트 콘텐츠 <span class="new-badge">NEW</span></td><td class="py-3 text-center text-gray-400">-</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr></tbody><tfoot><tr class="border-t-2 border-gray-400"><td class="pt-3 font-bold text-base">총 합계</td><td class="pt-3 text-center font-bold text-base text-cyan-600">7명</td><td class="pt-3 text-center font-bold text-base text-amber-600">7명 + ?</td></tr></tfoot></table></div>
                                 </div>
-                                <div class="flex flex-col items-center">
-                                    <div class="p-4 bg-green-200 text-green-800 rounded-lg font-bold mb-4">GGP 컨트롤</div>
-                                    <div class="flex gap-4">
-                                        <div class="p-3 bg-white border border-green-300 rounded">서브 테이블 1</div>
-                                        <div class="p-3 bg-white border border-green-300 rounded">서브 테이블 2</div>
-                                    </div>
+                                <div class="flex flex-col items-center space-y-4">
+                                    <h4 class="font-bold text-lg mb-4 text-center text-gray-800">10월 프로젝트 공간 구성</h4>
+                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold mb-4 text-gray-600">무대 (Stage)</h5><div class="flex justify-around items-start mb-4"><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 1</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-32 w-32 md:h-36 md:w-36 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-sm md:text-base font-bold text-white">메인 피처</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-red-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">카라펫</div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 2</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div></div><div class="text-center bg-gray-200 p-2 rounded-lg mt-4"><p class="font-bold text-gray-600">컨트롤룸 커뮤니케이션: ?</p></div></div>
+                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold text-gray-600">대회장 (Venue Floor)</h5><div class="mt-2 flex flex-col items-center gap-2 h-full justify-center"><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-700">PM (커뮤니케이션): 1명</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-indigo-600">현장 운영: 2명</p></div></div></div>
                                 </div>
                             </div>
                         </div>
-                         <div id="op-panel-2" class="op-panel hidden w-full">
-                             <p class="text-gray-700 text-center font-semibold mb-4">3개의 피처 테이블 모두 GGP에서 직접 컨트롤합니다.</p>
-                             <div class="flex flex-col items-center">
-                                 <div class="p-4 bg-green-200 text-green-800 rounded-lg font-bold mb-4">GGP 컨트롤 타워</div>
-                                 <div class="flex gap-4">
-                                     <div class="p-3 bg-white border border-green-300 rounded">테이블 1</div>
-                                     <div class="p-3 bg-white border border-green-300 rounded">테이블 2</div>
-                                     <div class="p-3 bg-white border border-green-300 rounded">테이블 3</div>
-                                 </div>
-                             </div>
-                        </div>
-                         <div id="op-panel-3" class="op-panel hidden w-full">
-                            <p class="text-gray-700 text-center font-semibold mb-4">GGP가 2개 테이블을, 외주사가 1개 테이블을 담당합니다.</p>
-                            <div class="flex justify-around items-start">
-                                <div class="flex flex-col items-center">
-                                    <div class="p-4 bg-green-200 text-green-800 rounded-lg font-bold mb-4">GGP 컨트롤</div>
-                                    <div class="flex gap-4">
-                                        <div class="p-3 bg-white border border-green-300 rounded">메인 테이블</div>
-                                        <div class="p-3 bg-white border border-green-300 rounded">서브 테이블 1</div>
-                                    </div>
+                    </div>
+                    <!-- Option 2 Panel -->
+                    <div id="option2-process" class="process-panel hidden">
+                        <div class="border-2 border-purple-200 rounded-lg p-6 bg-purple-50/50">
+                            <h3 class="text-2xl font-bold text-center mb-8 text-purple-700">옵션 2: GGP 전체 통제</h3>
+                            <div class="grid lg:grid-cols-2 gap-10 items-start">
+                                <div>
+                                    <h4 class="font-bold text-lg mb-4 text-center">인원 구성</h4>
+                                    <div class="bg-white rounded-lg p-4 shadow"><table class="w-full text-left text-sm"><thead><tr class="border-b border-gray-300"><th class="py-2 font-semibold">역할</th><th class="py-2 font-semibold text-center text-purple-600">인원</th></tr></thead><tbody class="divide-y divide-gray-200"><tr><td class="py-3">PM (커뮤니케이션)</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3">현장 운영</td><td class="py-3 text-center font-semibold">2명</td></tr><tr><td class="py-3">컨트롤룸</td><td class="py-3 text-center font-semibold">6명</td></tr><tr><td class="py-3">컨트롤룸 커뮤니케이션</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr></tbody><tfoot><tr class="border-t-2 border-gray-400"><td class="pt-3 font-bold text-base">총 합계</td><td class="pt-3 text-center font-bold text-base text-purple-600">9명 + ?</td></tr></tfoot></table></div>
                                 </div>
-                                <div class="flex flex-col items-center">
-                                    <div class="p-4 bg-purple-200 text-purple-800 rounded-lg font-bold mb-4">외주 (카라펫)</div>
-                                    <div class="flex gap-4">
-                                        <div class="p-3 bg-white border border-purple-300 rounded">서브 테이블 2</div>
-                                    </div>
+                                <div class="flex flex-col items-center space-y-4">
+                                    <h4 class="font-bold text-lg mb-4 text-center">공간 구성</h4>
+                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold mb-4 text-gray-600">무대 (Stage)</h5><div class="flex justify-around items-start mb-4"><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 1</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-32 w-32 md:h-36 md:w-36 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-sm md:text-base font-bold text-white">메인 피처</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 2</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div></div><div class="text-center bg-gray-200 p-2 rounded-lg mt-4"><p class="font-bold text-gray-600">컨트롤룸 커뮤니케이션: ?</p></div></div>
+                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold text-gray-600">대회장 (Venue Floor)</h5><div class="mt-2 flex flex-col items-center gap-2 h-full justify-center"><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-700">PM (커뮤니케이션): 1명</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-purple-600">현장 운영: 2명</p></div></div></div>
                                 </div>
                             </div>
                         </div>
-                     </div>
-                     
-                     <div class="mt-6 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                         <h4 class="font-bold text-lg text-yellow-800">필수 요건: 현장 총괄 담당자 지정</h4>
-                         <p class="text-yellow-700 mt-2">어떤 방식을 선택하든, 현장의 모든 이슈를 해결하고 전체 방송의 톤앤매너와 샷 리스트를 통일하기 위해, 이를 총괄하는 '현장 총괄 담당자' 및 '커뮤니케이션 담당자' 지정이 필수적입니다.</p>
-                     </div>
+                    </div>
+                    <!-- Option 3 Panel -->
+                    <div id="option3-process" class="process-panel hidden">
+                         <div class="border-2 border-teal-200 rounded-lg p-6 bg-teal-50/50">
+                            <h3 class="text-2xl font-bold text-center mb-8 text-teal-700">옵션 3: 하이브리드</h3>
+                            <div class="grid lg:grid-cols-2 gap-10 items-start">
+                                <div>
+                                    <h4 class="font-bold text-lg mb-4 text-center">인원 구성</h4>
+                                    <div class="bg-white rounded-lg p-4 shadow"><table class="w-full text-left text-sm"><thead><tr class="border-b border-gray-300"><th class="py-2 font-semibold">역할</th><th class="py-2 font-semibold text-center text-teal-600">인원</th></tr></thead><tbody class="divide-y divide-gray-200"><tr><td class="py-3">PM (커뮤니케이션)</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3">현장 운영</td><td class="py-3 text-center font-semibold">2명</td></tr><tr><td class="py-3">컨트롤룸</td><td class="py-3 text-center font-semibold">4명</td></tr><tr><td class="py-3">컨트롤룸 커뮤니케이션</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr></tbody><tfoot><tr class="border-t-2 border-gray-400"><td class="pt-3 font-bold text-base">총 합계</td><td class="pt-3 text-center font-bold text-base text-teal-600">7명 + ?</td></tr></tfoot></table></div>
+                                </div>
+                                <div class="flex flex-col items-center space-y-4">
+                                    <h4 class="font-bold text-lg mb-4 text-center">공간 구성</h4>
+                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold mb-4 text-gray-600">무대 (Stage)</h5><div class="flex justify-around items-start mb-4"><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 1</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-32 w-32 md:h-36 md:w-36 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-sm md:text-base font-bold text-white">메인 피처</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 2</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-red-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">카라펫</div></div></div><div class="text-center bg-gray-200 p-2 rounded-lg mt-4"><p class="font-bold text-gray-600">컨트롤룸 커뮤니케이션: ?</p></div></div>
+                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold text-gray-600">대회장 (Venue Floor)</h5><div class="mt-2 flex flex-col items-center gap-2 h-full justify-center"><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-700">PM (커뮤니케이션): 1명</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-teal-600">현장 운영: 2명</p></div></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -626,18 +326,15 @@
 
             function createCalendar(month, year, containerId, issueData) {
                 const container = document.getElementById(containerId);
+                if (!container) return; // Defensive check
                 const daysInMonth = new Date(year, month, 0).getDate();
-                const firstDay = new Date(year, month - 1, 1).getDay(); // 0=Sun, 1=Mon ... 6=Sat
+                const firstDay = new Date(year, month - 1, 1).getDay();
                 
                 let html = `<h4 class="text-lg font-bold text-center mb-2 text-gray-800">${year}년 ${month}월</h4>`;
                 html += '<div class="calendar-grid text-xs text-gray-500 font-semibold mb-1"><div class="text-center">일</div><div class="text-center">월</div><div class="text-center">화</div><div class="text-center">수</div><div class="text-center">목</div><div class="text-center">금</div><div class="text-center">토</div></div>';
                 html += '<div class="calendar-grid">';
 
-                const dayOffset = firstDay;
-                for (let i = 0; i < dayOffset; i++) {
-                    html += '<div></div>';
-                }
-
+                for (let i = 0; i < firstDay; i++) { html += '<div></div>'; }
                 for (let day = 1; day <= daysInMonth; day++) {
                     if (issueData[day]) {
                         html += `<div class="calendar-day has-issue"><span>${day}</span><span class="issue-badge">${issueData[day]}</span></div>`;
@@ -652,44 +349,32 @@
             createCalendar(4, 2025, 'calendar-apr', issues.apr);
             createCalendar(5, 2025, 'calendar-may', issues.may);
 
-            // Tabs for Equipment Setup
-            const setupTabButtons = document.querySelectorAll('#setup .tab-btn');
-            const setupTabPanels = document.querySelectorAll('#setup .setup-panel');
-
-            setupTabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    setupTabButtons.forEach(btn => btn.classList.remove('active'));
-                    setupTabPanels.forEach(panel => panel.classList.add('hidden'));
-
-                    button.classList.add('active');
-                    const panelId = 'panel-' + button.id.split('-').slice(1).join('-');
-                    const targetPanel = document.getElementById(panelId);
-                    if (targetPanel) {
-                        targetPanel.classList.remove('hidden');
-                    }
-                });
-            });
-
-            // Tabs for Business Trip Process
-            const opTabButtons = document.querySelectorAll('#process .tab-button');
-            const opTabPanels = document.querySelectorAll('#process .op-panel');
-
-            opTabButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault(); // Prevent default button behavior
-                    const tabNumber = button.dataset.tab;
-                    opTabButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-
-                    opTabPanels.forEach(panel => {
-                        if (panel.id === `op-panel-${tabNumber}`) {
-                            panel.classList.remove('hidden');
-                        } else {
-                            panel.classList.add('hidden');
-                        }
+            // Generic Tab Switcher Function
+            function setupTabs(containerSelector, buttonSelector, panelSelector) {
+                const tabButtons = document.querySelectorAll(`${containerSelector} ${buttonSelector}`);
+                const tabPanels = document.querySelectorAll(`${containerSelector} ${panelSelector}`);
+                
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        
+                        const targetId = button.dataset.target;
+                        tabPanels.forEach(panel => {
+                            if (panel.id === targetId) {
+                                panel.classList.remove('hidden');
+                            } else {
+                                panel.classList.add('hidden');
+                            }
+                        });
                     });
                 });
-            });
+            }
+
+            // Initialize all tab systems
+            setupTabs('#setup', '.setup-tab-btn', '.setup-panel');
+            setupTabs('#process', '.process-tab-btn', '.process-panel');
+
 
             // Video Modal Logic
             const modal = document.getElementById('video-modal');
