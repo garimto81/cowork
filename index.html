@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.03</title>
+    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.05</title>
     
     <!-- Chosen Palette: Calm Neutral Professional -->
     <!-- Application Structure Plan: 기획서의 논리적 흐름을 그대로 따르는 단일 페이지 대시보드 형식으로 설계했습니다. 사용자는 스크롤을 통해 '업무 방식 개선 → 현황 진단 → 핵심 과제 → 안정성 강화 → 운영 프로세스' 순으로 자연스럽게 계획을 파악할 수 있습니다. 각 섹션은 정보 카드, 시각적 다이어그램, 인터랙티브 탭과 같은 요소를 사용하여 정적인 문서보다 높은 가독성과 정보 전달력을 갖도록 구성했습니다. 이를 통해 사용자는 계획의 전체적인 맥락과 세부 실행 방안을 더 쉽게 이해하고 탐색할 수 있습니다. -->
@@ -89,6 +89,41 @@
         .roadmap-overlay {
             transition: opacity 0.3s ease-in-out;
         }
+        /* Styles for the new setup tabs */
+        .tab-btn {
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            color: #6B7281; /* gray-500 */
+            border-bottom: 3px solid transparent;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        @media (min-width: 640px) {
+            .tab-btn {
+                padding: 0.75rem 1.5rem;
+            }
+        }
+        .tab-btn:hover {
+            color: #111827; /* gray-900 */
+        }
+        .tab-btn.active {
+            color: #3B82F6; /* blue-500 */
+            border-bottom-color: #3B82F6; /* blue-500 */
+        }
+        .camera-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            color: #4B5563; /* gray-600 */
+        }
+        .ref-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: background-color 0.2s ease;
+        }
+        .ref-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -97,7 +132,7 @@
 
         <header class="text-center my-8 md:my-12">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 whitespace-nowrap">2025 WSOP SC CYPRUS 카메라 파트 전략</h1>
-            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.03</p>
+            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.05</p>
             <p class="mt-4 text-lg text-gray-600">5월 MPP 프로젝트 리뷰 기반, 10월 SC 프로젝트 실행 계획</p>
         </header>
 
@@ -196,7 +231,139 @@
                 </div>
             </section>
             
-            <!-- 2. 현재 진행 상태 -->
+            <!-- NEW: Core Strategy Section -->
+            <section id="strategy">
+                <h2 class="section-title text-center">핵심 전략: 이중적 "엣지" 구현</h2>
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="card p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">💎</span>
+                            <h3 class="text-2xl font-bold text-gray-800">보편적 엣지 (Universal Edge)</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2 font-semibold">"정적 화면의 정점"</p>
+                        <p class="text-gray-600">
+                            플레이어 미드 샷을 포함한 모든 기본 샷에서 일관되게 구현되는 최고 수준의 A컷. <br> 모든 샷을 완벽하게 계산된 사진 작품처럼 구성하여, <br> 방송 전체의 기본 품질을 격상시키고 지속적인 몰입감을 제공합니다.
+                        </p>
+                    </div>
+                    <div class="card p-8 rounded-xl shadow-lg relative group overflow-hidden">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">🔥</span>
+                            <h3 class="text-2xl font-bold text-gray-800">킥 엣지 (Kick Edge)</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2 font-semibold">"핵심 핸드의 다이나믹한 연출"</p>
+                        <p class="text-gray-600">
+                            대회의 가장 중요한 분기점에서 펼쳐지는 특별한 숏 시퀀스. <br> 빅팟 올인, 중요 인물의 탈락 위기 등 주요 순간에 극적인 연출을 도입하여 시청자에게 강렬한 드라마와 감동을 선사합니다.
+                        </p>
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center space-y-4 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/QP5TZGTR3B8?start=28293&autoplay=1&mute=1">▶ 레퍼런스 #01</button>
+                            <button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/6kdfG00zYCI?start=8142&autoplay=1&mute=1">▶ 레퍼런스 #02</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Equipment Setup Evolution Section -->
+            <section id="setup">
+                <h2 class="section-title text-center">장비 구성 진화: MPP → WSOP SC</h2>
+                <div class="bg-white p-4 sm:p-8 rounded-xl shadow-lg border border-gray-200">
+                    <p class="text-center text-gray-600 mb-8">5월 MPP 프로젝트의 경험을 바탕으로, 10월 WSOP SC에서는 카메라 시스템을 단계적으로 발전시켜 A컷 품질을 극대화합니다.</p>
+                    
+                    <div class="flex justify-center border-b border-gray-200 mb-8">
+                        <button id="tab-may-initial" class="tab-btn active">5월 MPP 초기</button>
+                        <button id="tab-may-final" class="tab-btn">5월 MPP 후기</button>
+                        <button id="tab-oct" class="tab-btn">10월 WSOP SC</button>
+                    </div>
+                    
+                    <!-- 5월 MPP 초기 패널 -->
+                    <div id="panel-may-initial" class="setup-panel">
+                         <p class="text-center font-semibold text-gray-700 mb-4">기본 8캠 시스템으로 안정적 운영에 집중</p>
+                        <div class="relative max-w-4xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8">
+                            <div class="absolute w-full h-full flex items-center justify-center">
+                                <div class="w-[60%] h-[55%] bg-gray-500 border-8 border-gray-700 rounded-[50%] flex items-center justify-center text-white font-bold relative">
+                                    <div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div>
+                                    <div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div>
+                                </div>
+                            </div>
+                            <div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div>
+                            <div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div>
+                            <div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div>
+                            <div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div>
+                            <div class="absolute top-0 right-[20%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div>
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div>
+                        </div>
+                         <ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-3xl mx-auto">
+                            <li>📹 Sony FR7 (PTZ) x 4</li>
+                            <li>📹 보드 캠 (FR7) x 1</li>
+                            <li>📷 탑 캠 (Overhead) x 1</li>
+                            <li>🎥 프리 캠 (Freelance) x 1</li>
+                            <li>🎥 풀 샷 캠 (Full Shot) x 1</li>
+                            <li class="font-bold col-span-full sm:col-auto">총 8대 / 테이블</li>
+                        </ul>
+                    </div>
+
+                    <!-- 5월 MPP 후기 패널 -->
+                    <div id="panel-may-final" class="setup-panel hidden">
+                         <p class="text-center font-semibold text-gray-700 mb-4">인물 고정 캠 추가로 A컷 안정화</p>
+                        <div class="relative max-w-4xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8">
+                            <div class="absolute w-full h-full flex items-center justify-center">
+                                <div class="w-[60%] h-[55%] bg-gray-500 border-8 border-gray-700 rounded-[50%] flex items-center justify-center text-white font-bold relative">
+                                    <div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div>
+                                    <div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div>
+                                </div>
+                            </div>
+                            <div class="absolute top-[20%] left-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-gray-400">🎥</div><span class="text-xs font-semibold">인물 고정 캠</span></div>
+                            <div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div>
+                            <div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div>
+                            <div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div>
+                            <div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div>
+                            <div class="absolute top-0 right-[20%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div>
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div>
+                        </div>
+                         <ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-3xl mx-auto">
+                            <li>📹 Sony FR7 (PTZ) x 4</li>
+                            <li>🎥 인물 고정 캠 x 1</li>
+                            <li>📹 보드 캠 (FR7) x 1</li>
+                            <li>📷 탑 캠 (Overhead) x 1</li>
+                            <li>🎥 프리 캠 (Freelance) x 1</li>
+                            <li>🎥 풀 샷 캠 (Full Shot) x 1</li>
+                            <li class="font-bold col-span-full sm:col-auto">총 9대 / 테이블</li>
+                        </ul>
+                    </div>
+
+                    <!-- 10월 WSOP SC 패널 -->
+                    <div id="panel-oct" class="setup-panel hidden">
+                        <p class="text-center font-semibold text-gray-700 mb-4">전체 FR7 시스템으로 업그레이드하여 퀄리티 표준화 (총 10캠)</p>
+                         <div class="relative max-w-4xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8">
+                            <div class="absolute w-full h-full flex items-center justify-center">
+                                <div class="w-[60%] h-[55%] bg-blue-800 border-8 border-yellow-400 rounded-[50%] flex items-center justify-center text-white font-bold relative">
+                                    <div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div>
+                                    <div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div>
+                                </div>
+                            </div>
+                            <div class="absolute top-[20%] left-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #5</span></div>
+                            <div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div>
+                            <div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div>
+                            <div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div>
+                            <div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div>
+                            <div class="absolute top-[20%] right-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #6</span></div>
+                            <div class="absolute top-0 right-[25%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div>
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div>
+                        </div>
+                         <ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-3xl mx-auto">
+                            <li>📹 Sony FR7 (PTZ) x 6</li>
+                            <li>📹 보드 캠 (FR7) x 1</li>
+                            <li>📷 탑 캠 (Overhead) x 1</li>
+                            <li>🎥 프리 캠 (Freelance) x 1</li>
+                            <li>🎥 풀 샷 캠 (Full Shot) x 1</li>
+                            <li class="font-bold col-span-full sm:col-auto">총 10대 / 테이블</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+            
+            <!-- Other sections follow -->
+
             <section id="current-status">
                 <h2 class="section-title">현재 진행 과제 (<span id="current-date-title"></span> 기준)</h2>
                 <p class="text-gray-600 mb-6 text-center">로드맵에 따라, 10월 WSOP SC CYPRUS 프로젝트 성공을 위해 아래 과제들을 중점적으로 진행하고 있습니다.</p>
@@ -219,7 +386,6 @@
                 </div>
             </section>
 
-            <!-- 3. 업무 방식 개선 -->
             <section id="work-method">
                 <h2 class="section-title">업무 방식 개선</h2>
                 <div class="grid md:grid-cols-2 gap-8">
@@ -240,7 +406,6 @@
                 </div>
             </section>
 
-            <!-- 4. 현황 진단 및 비전 설계 -->
             <section id="vision">
                 <h2 class="section-title">현황 진단 및 비전 설계</h2>
                  <div class="space-y-8">
@@ -292,7 +457,6 @@
                 </div>
             </section>
 
-            <!-- 5. 핵심 과제 실행 계획 -->
             <section id="action-plan">
                 <h2 class="section-title">핵심 과제 실행 계획: 최종 프레임 퀄리티 향상</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -330,7 +494,6 @@
                 </div>
             </section>
             
-            <!-- 6. 운영 안정성 강화 계획 -->
             <section id="stability-plan">
                 <h2 class="section-title">운영 안정성 강화 계획</h2>
                 <p class="text-gray-600 mb-6 text-center">핵심 과제와는 별개로, 현장 운용 인력의 스트레스와 오류율을 줄여 안정적인 방송 환경을 구축하기 위한 계획입니다.</p>
@@ -352,7 +515,6 @@
                 </div>
             </section>
             
-            <!-- 7. 출장 운영 프로세스 -->
             <section id="process">
                 <h2 class="section-title">출장 운영 프로세스 정립</h2>
                 <div class="bg-white p-6 rounded-lg border border-gray-200">
@@ -360,13 +522,13 @@
                      <p class="text-gray-600 mb-4">피처 테이블 3개 운영 시, 상황에 따라 아래 방식 중 하나를 선택할 수 있습니다. 탭을 클릭하여 각 방식의 구조를 확인하세요.</p>
                      
                      <div class="mb-4 flex flex-wrap gap-2 border-b border-gray-200">
-                        <button class="tab-button active py-2 px-4 rounded-t-lg" data-tab="1">방식 1: 기존 유지</button>
-                        <button class="tab-button py-2 px-4 rounded-t-lg" data-tab="2">방식 2: GGP 통합</button>
-                        <button class="tab-button py-2 px-4 rounded-t-lg" data-tab="3">방식 3: 하이브리드</button>
+                        <button class="tab-button active" data-tab="1">방식 1: 기존 유지</button>
+                        <button class="tab-button" data-tab="2">방식 2: GGP 통합</button>
+                        <button class="tab-button" data-tab="3">방식 3: 하이브리드</button>
                      </div>
                      
                      <div id="tab-content" class="p-4 bg-gray-50 rounded-b-lg min-h-[180px] flex items-center justify-center">
-                        <div id="tab-panel-1" class="tab-panel w-full">
+                        <div id="op-panel-1" class="op-panel w-full">
                             <p class="text-gray-700 text-center font-semibold mb-4">메인 테이블은 외주(카라펫)에서 담당하고, 2개의 서브 테이블은 GGP에서 직접 컨트롤합니다.</p>
                             <div class="flex justify-around items-start">
                                 <div class="flex flex-col items-center">
@@ -384,7 +546,7 @@
                                 </div>
                             </div>
                         </div>
-                         <div id="tab-panel-2" class="tab-panel hidden w-full">
+                         <div id="op-panel-2" class="op-panel hidden w-full">
                              <p class="text-gray-700 text-center font-semibold mb-4">3개의 피처 테이블 모두 GGP에서 직접 컨트롤합니다.</p>
                              <div class="flex flex-col items-center">
                                  <div class="p-4 bg-green-200 text-green-800 rounded-lg font-bold mb-4">GGP 컨트롤 타워</div>
@@ -395,7 +557,7 @@
                                  </div>
                              </div>
                         </div>
-                         <div id="tab-panel-3" class="tab-panel hidden w-full">
+                         <div id="op-panel-3" class="op-panel hidden w-full">
                             <p class="text-gray-700 text-center font-semibold mb-4">GGP가 2개 테이블을, 외주사가 1개 테이블을 담당합니다.</p>
                             <div class="flex justify-around items-start">
                                 <div class="flex flex-col items-center">
@@ -427,6 +589,15 @@
             <p class="text-gray-500">Camera Department Initiative</p>
         </footer>
     </div>
+    
+    <!-- Video Modal -->
+    <div id="video-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4">
+        <div class="bg-black w-full max-w-4xl aspect-video relative">
+            <button id="modal-close-btn" class="absolute -top-10 right-0 text-white text-4xl font-bold">&times;</button>
+            <iframe id="video-iframe" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -455,7 +626,6 @@
 
             function createCalendar(month, year, containerId, issueData) {
                 const container = document.getElementById(containerId);
-                // NOTE: In new Date(), month is 0-indexed (0=Jan, 1=Feb, etc).
                 const daysInMonth = new Date(year, month, 0).getDate();
                 const firstDay = new Date(year, month - 1, 1).getDay(); // 0=Sun, 1=Mon ... 6=Sat
                 
@@ -463,9 +633,7 @@
                 html += '<div class="calendar-grid text-xs text-gray-500 font-semibold mb-1"><div class="text-center">일</div><div class="text-center">월</div><div class="text-center">화</div><div class="text-center">수</div><div class="text-center">목</div><div class="text-center">금</div><div class="text-center">토</div></div>';
                 html += '<div class="calendar-grid">';
 
-                // CORRECTED: The offset should be equal to the getDay() value as the week starts on Sunday (0).
                 const dayOffset = firstDay;
-
                 for (let i = 0; i < dayOffset; i++) {
                     html += '<div></div>';
                 }
@@ -484,27 +652,71 @@
             createCalendar(4, 2025, 'calendar-apr', issues.apr);
             createCalendar(5, 2025, 'calendar-may', issues.may);
 
-            // Tabs for Business Trip Process
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabPanels = document.querySelectorAll('.tab-panel');
+            // Tabs for Equipment Setup
+            const setupTabButtons = document.querySelectorAll('#setup .tab-btn');
+            const setupTabPanels = document.querySelectorAll('#setup .setup-panel');
 
-            tabButtons.forEach(button => {
+            setupTabButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    const tabNumber = button.dataset.tab;
+                    setupTabButtons.forEach(btn => btn.classList.remove('active'));
+                    setupTabPanels.forEach(panel => panel.classList.add('hidden'));
 
-                    tabButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                    });
+                    button.classList.add('active');
+                    const panelId = 'panel-' + button.id.split('-').slice(1).join('-');
+                    const targetPanel = document.getElementById(panelId);
+                    if (targetPanel) {
+                        targetPanel.classList.remove('hidden');
+                    }
+                });
+            });
+
+            // Tabs for Business Trip Process
+            const opTabButtons = document.querySelectorAll('#process .tab-button');
+            const opTabPanels = document.querySelectorAll('#process .op-panel');
+
+            opTabButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default button behavior
+                    const tabNumber = button.dataset.tab;
+                    opTabButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
 
-                    tabPanels.forEach(panel => {
-                        if (panel.id === `tab-panel-${tabNumber}`) {
+                    opTabPanels.forEach(panel => {
+                        if (panel.id === `op-panel-${tabNumber}`) {
                             panel.classList.remove('hidden');
                         } else {
                             panel.classList.add('hidden');
                         }
                     });
                 });
+            });
+
+            // Video Modal Logic
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('video-iframe');
+            const closeBtn = document.getElementById('modal-close-btn');
+            const refButtons = document.querySelectorAll('.kick-edge-ref-btn');
+
+            refButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const url = button.dataset.url;
+                    if (url) {
+                        iframe.src = url;
+                        modal.classList.remove('hidden');
+                    }
+                });
+            });
+
+            function closeModal() {
+                modal.classList.add('hidden');
+                iframe.src = ''; // Stop video playback
+            }
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if(e.target === modal) {
+                    closeModal();
+                }
             });
         });
     </script>
