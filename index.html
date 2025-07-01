@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.07</title>
+    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.08</title>
     
     <!-- Chosen Palette: Calm Neutral Professional -->
     <!-- Application Structure Plan: 기획서의 논리적 흐름을 그대로 따르는 단일 페이지 대시보드 형식으로 설계했습니다. 사용자는 스크롤을 통해 '업무 방식 개선 → 현황 진단 → 핵심 과제 → 안정성 강화 → 운영 프로세스' 순으로 자연스럽게 계획을 파악할 수 있습니다. 각 섹션은 정보 카드, 시각적 다이어그램, 인터랙티브 탭과 같은 요소를 사용하여 정적인 문서보다 높은 가독성과 정보 전달력을 갖도록 구성했습니다. 이를 통해 사용자는 계획의 전체적인 맥락과 세부 실행 방안을 더 쉽게 이해하고 탐색할 수 있습니다. -->
@@ -21,6 +21,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Noto Sans KR', sans-serif;
             background-color: #F9FAFB; /* coolGray-50 */
@@ -132,15 +135,47 @@
             border-radius: 9999px;
             margin-left: 8px;
         }
+        .nav-link {
+            font-weight: 600;
+            color: #4B5563; /* gray-600 */
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #3B82F6; /* blue-500 */
+        }
     </style>
 </head>
 <body class="text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-4 right-4 z-50">
+        <div class="hidden md:flex bg-white/80 backdrop-blur-sm shadow-lg rounded-full px-4 py-2 space-x-4">
+            <a href="#roadmap" class="nav-link">로드맵</a>
+            <a href="#strategy" class="nav-link">핵심 전략</a>
+            <a href="#setup" class="nav-link">장비 구성</a>
+            <a href="#process" class="nav-link">운영 시나리오</a>
+        </div>
+        <div class="md:hidden">
+            <button id="menu-btn" class="bg-white/80 backdrop-blur-sm shadow-lg rounded-full p-3">
+                <svg id="menu-open-icon" class="h-6 w-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                <svg id="menu-close-icon" class="hidden h-6 w-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </div>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-gray-900/50 z-40">
+        <div class="fixed top-20 right-4 bg-white rounded-lg shadow-xl p-4 w-56">
+            <a href="#roadmap" class="block py-2 px-3 rounded-md hover:bg-gray-100 nav-link">로드맵</a>
+            <a href="#strategy" class="block py-2 px-3 rounded-md hover:bg-gray-100 nav-link">핵심 전략</a>
+            <a href="#setup" class="block py-2 px-3 rounded-md hover:bg-gray-100 nav-link">장비 구성</a>
+            <a href="#process" class="block py-2 px-3 rounded-md hover:bg-gray-100 nav-link">운영 시나리오</a>
+        </div>
+    </div>
 
     <div class="container mx-auto max-w-5xl p-4 sm:p-6 md:p-8">
 
         <header class="text-center my-8 md:my-12">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 whitespace-nowrap">2025 WSOP SC CYPRUS 카메라 파트 전략</h1>
-            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.07</p>
+            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.08</p>
             <p class="mt-4 text-lg text-gray-600">5월 MPP 프로젝트 리뷰 기반, 10월 SC 프로젝트 실행 계획</p>
         </header>
 
@@ -196,7 +231,7 @@
             
             <!-- 핵심 전략 -->
             <section id="strategy">
-                <h2 class="section-title text-center">핵심 전략: 이중적 "엣지" 구현</h2>
+                <h2 class="section-title text-center">이중적 "엣지" 구현</h2>
                 <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     <div class="card p-8 rounded-xl shadow-lg"><div class="flex items-center mb-4"><span class="text-3xl mr-4">💎</span><h3 class="text-2xl font-bold text-gray-800">보편적 엣지 (Universal Edge)</h3></div><p class="text-gray-600 mb-2 font-semibold">"정적 화면의 정점"</p><p class="text-gray-600">플레이어 미드 샷을 포함한 모든 기본 샷에서 일관되게 구현되는 최고 수준의 A컷. <br> 모든 샷을 완벽하게 계산된 사진 작품처럼 구성하여, <br> 방송 전체의 기본 품질을 격상시키고 지속적인 몰입감을 제공합니다.</p></div>
                     <div class="card p-8 rounded-xl shadow-lg relative group overflow-hidden"><div class="flex items-center mb-4"><span class="text-3xl mr-4">🔥</span><h3 class="text-2xl font-bold text-gray-800">킥 엣지 (Kick Edge)</h3></div><p class="text-gray-600 mb-2 font-semibold">"핵심 핸드의 다이나믹한 연출"</p><p class="text-gray-600">대회의 가장 중요한 분기점에서 펼쳐지는 특별한 숏 시퀀스. <br> 빅팟 올인, 중요 인물의 탈락 위기 등 주요 순간에 극적인 연출을 도입하여 시청자에게 강렬한 드라마와 감동을 선사합니다.</p><div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center space-y-4 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"><button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/QP5TZGTR3B8?start=28293&autoplay=1&mute=1">▶ 레퍼런스 #01</button><button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/6kdfG00zYCI?start=8142&autoplay=1&mute=1">▶ 레퍼런스 #02</button></div></div>
@@ -346,8 +381,10 @@
                 container.innerHTML = html;
             }
 
-            createCalendar(4, 2025, 'calendar-apr', issues.apr);
-            createCalendar(5, 2025, 'calendar-may', issues.may);
+            if (document.getElementById('calendar-apr') && document.getElementById('calendar-may')) {
+                createCalendar(4, 2025, 'calendar-apr', issues.apr);
+                createCalendar(5, 2025, 'calendar-may', issues.may);
+            }
 
             // Generic Tab Switcher Function
             function setupTabs(containerSelector, buttonSelector, panelSelector) {
@@ -393,17 +430,63 @@
             });
 
             function closeModal() {
-                modal.classList.add('hidden');
-                iframe.src = ''; // Stop video playback
+                if (modal) {
+                    modal.classList.add('hidden');
+                }
+                if (iframe) {
+                    iframe.src = ''; // Stop video playback
+                }
+            }
+            
+            if(closeBtn) {
+                closeBtn.addEventListener('click', closeModal);
+            }
+            if(modal){
+                modal.addEventListener('click', (e) => {
+                    if(e.target === modal) {
+                        closeModal();
+                    }
+                });
             }
 
-            closeBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', (e) => {
-                if(e.target === modal) {
-                    closeModal();
-                }
+            // Navigation Menu Logic
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('menu-open-icon');
+            const closeIcon = document.getElementById('menu-close-icon');
+
+            if (menuBtn) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    openIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if (!targetElement) return;
+
+                    e.preventDefault();
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        openIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                    }
+                });
             });
         });
     </script>
 </body>
 </html>
+```
+
+
+
+현황 진단 및 비전 설계 섹션을 제
