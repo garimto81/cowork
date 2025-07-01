@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.01</title>
+    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.03</title>
     
     <!-- Chosen Palette: Calm Neutral Professional -->
     <!-- Application Structure Plan: 기획서의 논리적 흐름을 그대로 따르는 단일 페이지 대시보드 형식으로 설계했습니다. 사용자는 스크롤을 통해 '업무 방식 개선 → 현황 진단 → 핵심 과제 → 안정성 강화 → 운영 프로세스' 순으로 자연스럽게 계획을 파악할 수 있습니다. 각 섹션은 정보 카드, 시각적 다이어그램, 인터랙티브 탭과 같은 요소를 사용하여 정적인 문서보다 높은 가독성과 정보 전달력을 갖도록 구성했습니다. 이를 통해 사용자는 계획의 전체적인 맥락과 세부 실행 방안을 더 쉽게 이해하고 탐색할 수 있습니다. -->
@@ -86,6 +86,9 @@
             line-height: 16px;
             font-weight: 500;
         }
+        .roadmap-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -94,7 +97,7 @@
 
         <header class="text-center my-8 md:my-12">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 whitespace-nowrap">2025 WSOP SC CYPRUS 카메라 파트 전략</h1>
-            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.01</p>
+            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.03</p>
             <p class="mt-4 text-lg text-gray-600">5월 MPP 프로젝트 리뷰 기반, 10월 SC 프로젝트 실행 계획</p>
         </header>
 
@@ -118,31 +121,35 @@
                 <h2 class="section-title">프로젝트 실행 로드맵</h2>
                 <div class="space-y-8 mt-8">
                     <!-- June Card -->
-                    <div class="card p-6 border-l-8 border-gray-500 flex flex-col sm:flex-row items-center gap-6">
-                        <div class="flex-shrink-0 text-center">
-                            <p class="text-4xl font-bold text-gray-700">6월</p>
-                            <p class="font-semibold text-gray-500">Phase 1</p>
+                    <a href="https://garimto81.github.io/ggm/" target="_blank" class="block card overflow-hidden">
+                        <div class="p-6 border-l-8 border-gray-500 flex flex-col sm:flex-row items-center gap-6">
+                            <div class="flex-shrink-0 text-center">
+                                <p class="text-4xl font-bold text-gray-700">6월</p>
+                                <p class="font-semibold text-gray-500">Phase 1</p>
+                            </div>
+                            <div class="flex-grow text-center sm:text-left">
+                                <h3 class="font-bold text-xl mb-2 text-gray-800">분석 및 기반 다지기</h3>
+                                <p class="text-gray-600">5월 MPP 출장에서 발생한 14가지 현장 이슈를 분석 및 해결하고, 연구를 통해 개선 지점을 도출하는 데 집중합니다.</p>
+                                <p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 문제점 명확화 및 개선 방향 수립</p>
+                            </div>
                         </div>
-                        <div class="flex-grow text-center sm:text-left">
-                            <h3 class="font-bold text-xl mb-2 text-gray-800">분석 및 기반 다지기</h3>
-                            <p class="text-gray-600">5월 MPP 출장에서 발생한 14가지 현장 이슈를 분석 및 해결하고, 연구를 통해 개선 지점을 도출하는 데 집중합니다.</p>
-                            <p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 문제점 명확화 및 개선 방향 수립</p>
-                        </div>
-                    </div>
+                    </a>
                     <!-- July Card -->
-                    <div class="card p-6 border-l-8 border-blue-500 flex flex-col sm:flex-row items-center gap-6">
-                         <div class="flex-shrink-0 text-center">
-                            <p class="text-4xl font-bold text-blue-700">7월</p>
-                            <p class="font-semibold text-blue-500">Phase 2</p>
+                    <a href="https://garimto81.github.io/arrangement_web/" target="_blank" class="block card overflow-hidden">
+                        <div class="p-6 border-l-8 border-blue-500 flex flex-col sm:flex-row items-center gap-6">
+                             <div class="flex-shrink-0 text-center">
+                                <p class="text-4xl font-bold text-blue-700">7월</p>
+                                <p class="font-semibold text-blue-500">Phase 2</p>
+                            </div>
+                            <div class="flex-grow text-center sm:text-left">
+                                <h3 class="font-bold text-xl mb-2 text-blue-800">퀄리티 집중 강화</h3>
+                                <p class="text-gray-600">프레임 퀄리티 R&D에 집중하여, 외부 프로덕션(카라펫)과 대등하거나 그 이상의 결과물을 도출하는 것을 목표로 합니다.</p>
+                                 <p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 퀄리티 비교 우위 확보 및 결론 도출</p>
+                            </div>
                         </div>
-                        <div class="flex-grow text-center sm:text-left">
-                            <h3 class="font-bold text-xl mb-2 text-blue-800">퀄리티 집중 강화</h3>
-                            <p class="text-gray-600">프레임 퀄리티 R&D에 집중하여, 외부 프로덕션(카라펫)과 대등하거나 그 이상의 결과물을 도출하는 것을 목표로 합니다.</p>
-                             <p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 퀄리티 비교 우위 확보 및 결론 도출</p>
-                        </div>
-                    </div>
+                    </a>
                     <!-- August Card -->
-                    <div class="card p-6 border-l-8 border-green-500 flex flex-col sm:flex-row items-center gap-6">
+                    <div class="card p-6 border-l-8 border-green-500 flex flex-col sm:flex-row items-center gap-6 relative group">
                          <div class="flex-shrink-0 text-center">
                             <p class="text-4xl font-bold text-green-700">8월</p>
                             <p class="font-semibold text-green-500">Phase 3</p>
@@ -151,6 +158,10 @@
                             <h3 class="font-bold text-xl mb-2 text-green-800">운영 시스템 안정화</h3>
                             <p class="text-gray-600">현장 오류율을 최소화하기 위해 탈리, 하이브리드 스위처 등 안정성 강화 시스템 도입 및 테스트를 완료합니다.</p>
                             <p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 핵심 안정화 시스템 도입 및 검증</p>
+                        </div>
+                        <div class="roadmap-overlay absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 rounded-r-lg flex flex-col justify-center items-center opacity-0 group-hover:opacity-100">
+                             <a href="https://garimto81.github.io/switcher/" target="_blank" class="text-white font-bold text-lg hover:underline p-2">하이브리드 스위처 시스템 →</a>
+                             <a href="https://kai-kim87.github.io/my-second4-webpage/" target="_blank" class="text-white font-bold text-lg hover:underline p-2">탈리 시스템 도입 →</a>
                         </div>
                     </div>
                     <!-- September Card -->
@@ -498,4 +509,4 @@
         });
     </script>
 </body>
-</ht
+</html>
