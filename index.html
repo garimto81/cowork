@@ -99,10 +99,57 @@
 
         <main class="space-y-16 md:space-y-24">
 
-            <!-- 0. 현재 진행 상태 -->
+            <!-- 0. Today's Date Display -->
+            <div class="mb-12 flex justify-center">
+                <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-200 flex items-center gap-4">
+                    <svg class="w-8 h-8 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0h18M12 12.75h.008v.008H12v-.008Z" />
+                    </svg>
+                    <div>
+                        <p class="text-sm text-gray-500">Today's Date</p>
+                        <p id="today-date-display" class="text-xl font-bold text-gray-800"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1. 프로젝트 실행 로드맵 -->
+            <section id="roadmap">
+                <h2 class="section-title">10월 프로젝트 실행 로드맵</h2>
+                <div class="mt-8 grid md:grid-cols-3 gap-8">
+                    <!-- July Card -->
+                    <div class="card p-6 border-t-4 border-blue-500 flex flex-col">
+                        <h3 class="font-bold text-xl mb-3 text-blue-800">7월: 퀄리티 집중 강화</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">프레임 퀄리티 R&D에 집중하여, 외부 프로덕션(카라펫)과 대등하거나 그 이상의 결과물을 도출하는 것을 목표로 합니다.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <p class="font-semibold text-gray-800">핵심 목표:</p>
+                            <p class="text-gray-600">퀄리티 비교 우위 확보 및 결론 도출</p>
+                        </div>
+                    </div>
+                    <!-- August Card -->
+                    <div class="card p-6 border-t-4 border-green-500 flex flex-col">
+                        <h3 class="font-bold text-xl mb-3 text-green-800">8월: 운영 시스템 안정화</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">현장 오류율을 최소화하기 위해 탈리, 하이브리드 스위처 등 안정성 강화 시스템 도입 및 테스트를 완료합니다.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <p class="font-semibold text-gray-800">핵심 목표:</p>
+                            <p class="text-gray-600">핵심 안정화 시스템 도입 및 검증</p>
+                        </div>
+                    </div>
+                    <!-- September Card -->
+                    <div class="card p-6 border-t-4 border-purple-500 flex flex-col">
+                        <h3 class="font-bold text-xl mb-3 text-purple-800">9월: 리허설 및 숙련도 향상</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">실제와 같은 환경에서 전체 시스템 통합 리허설을 진행하여 팀원들의 숙련도를 최고 수준으로 끌어올립니다.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <p class="font-semibold text-gray-800">핵심 목표:</p>
+                            <p class="text-gray-600">최종 워크플로우 확립 및 팀 숙련도 극대화</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 2. 현재 진행 상태 -->
             <section id="current-status">
-                <h2 class="section-title">현재 진행 상태 (2025년 6월 26일 기준)</h2>
-                <p class="text-gray-600 mb-6 text-center">5월 MPP 프로젝트 종료 후, 10월 WSOP SC CYPRUS 프로젝트 성공을 위해 아래 과제들을 중점적으로 진행하고 있습니다.</p>
+                <h2 class="section-title">현재 진행 과제 (<span id="current-date-title"></span> 기준)</h2>
+                <p class="text-gray-600 mb-6 text-center">로드맵에 따라, 10월 WSOP SC CYPRUS 프로젝트 성공을 위해 아래 과제들을 중점적으로 진행하고 있습니다.</p>
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="card p-6 bg-blue-50 border-blue-200">
                         <h3 class="font-bold text-xl mb-4 text-blue-800">핵심 목표: 최종 프레임 퀄리티 향상</h3>
@@ -121,10 +168,10 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- 1. 업무 방식 개선 -->
+
+            <!-- 3. 업무 방식 개선 -->
             <section id="work-method">
-                <h2 class="section-title">1. 업무 방식 개선</h2>
+                <h2 class="section-title">업무 방식 개선</h2>
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-xl mb-3 text-gray-900">업무 현황 공유 및 관리</h3>
@@ -143,9 +190,9 @@
                 </div>
             </section>
 
-            <!-- 2. 현황 진단 및 비전 설계 -->
+            <!-- 4. 현황 진단 및 비전 설계 -->
             <section id="vision">
-                <h2 class="section-title">2. 현황 진단 및 비전 설계</h2>
+                <h2 class="section-title">현황 진단 및 비전 설계</h2>
                  <div class="space-y-8">
                     <div class="bg-white p-6 rounded-lg border border-gray-200">
                          <h3 class="font-bold text-xl mb-3 text-gray-900">MPP 리뷰 및 기준점 설정</h3>
@@ -195,9 +242,9 @@
                 </div>
             </section>
 
-            <!-- 3. 핵심 과제 실행 계획 -->
+            <!-- 5. 핵심 과제 실행 계획 -->
             <section id="action-plan">
-                <h2 class="section-title">3. 핵심 과제 실행 계획: 최종 프레임 퀄리티 향상</h2>
+                <h2 class="section-title">핵심 과제 실행 계획: 최종 프레임 퀄리티 향상</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="card p-6 flex flex-col">
                         <div class="flex justify-between items-start mb-3">
@@ -233,9 +280,9 @@
                 </div>
             </section>
             
-            <!-- 4. 운영 안정성 강화 계획 -->
+            <!-- 6. 운영 안정성 강화 계획 -->
             <section id="stability-plan">
-                <h2 class="section-title">4. 운영 안정성 강화 계획</h2>
+                <h2 class="section-title">운영 안정성 강화 계획</h2>
                 <p class="text-gray-600 mb-6 text-center">핵심 과제와는 별개로, 현장 운용 인력의 스트레스와 오류율을 줄여 안정적인 방송 환경을 구축하기 위한 계획입니다.</p>
                 <div class="grid md:grid-cols-2 gap-8">
                     <a href="https://garimto81.github.io/switcher/" target="_blank" class="card block p-6">
@@ -255,9 +302,9 @@
                 </div>
             </section>
             
-            <!-- 5. 출장 운영 프로세스 -->
+            <!-- 7. 출장 운영 프로세스 -->
             <section id="process">
-                <h2 class="section-title">5. 출장 운영 프로세스 정립</h2>
+                <h2 class="section-title">출장 운영 프로세스 정립</h2>
                 <div class="bg-white p-6 rounded-lg border border-gray-200">
                      <h3 class="font-bold text-xl mb-4 text-gray-900">피처 테이블 운영 방식 선택지</h3>
                      <p class="text-gray-600 mb-4">피처 테이블 3개 운영 시, 상황에 따라 아래 방식 중 하나를 선택할 수 있습니다. 탭을 클릭하여 각 방식의 구조를 확인하세요.</p>
@@ -324,7 +371,6 @@
                      </div>
                 </div>
             </section>
-
         </main>
 
         <footer class="text-center mt-16 md:mt-24 py-6 border-t border-gray-200">
@@ -334,6 +380,23 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Set dynamic date
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = today.getMonth() + 1;
+            const day = today.getDate();
+            const formattedDate = `${year}년 ${month}월 ${day}일`;
+            
+            const dateDisplayEl = document.getElementById('today-date-display');
+            if (dateDisplayEl) {
+                dateDisplayEl.textContent = formattedDate;
+            }
+            
+            const dateTitleEl = document.getElementById('current-date-title');
+            if (dateTitleEl) {
+                dateTitleEl.textContent = formattedDate;
+            }
+
             // MPP Issues Calendar Visualization
             const issues = {
                 apr: { 29: 2, 30: 1 },
