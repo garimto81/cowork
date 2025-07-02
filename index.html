@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.11</title>
+    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.13</title>
     
     <!-- Chosen Palette: Calm Neutral Professional -->
     <!-- Application Structure Plan: 기획서의 논리적 흐름을 그대로 따르는 단일 페이지 대시보드 형식으로 설계했습니다. 사용자는 스크롤을 통해 '업무 방식 개선 → 현황 진단 → 핵심 과제 → 안정성 강화 → 운영 프로세스' 순으로 자연스럽게 계획을 파악할 수 있습니다. 각 섹션은 정보 카드, 시각적 다이어그램, 인터랙티브 탭과 같은 요소를 사용하여 정적인 문서보다 높은 가독성과 정보 전달력을 갖도록 구성했습니다. 이를 통해 사용자는 계획의 전체적인 맥락과 세부 실행 방안을 더 쉽게 이해하고 탐색할 수 있습니다. -->
@@ -138,21 +138,6 @@
             color: #9CA3AF; /* gray-400 */
             font-size: 1rem;
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 250px;
-            max-height: 300px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 300px;
-                max-height: 350px;
-            }
-        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -187,7 +172,7 @@
 
         <header class="text-center my-8 md:my-12">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 whitespace-nowrap">2025 WSOP SC CYPRUS 카메라 파트 전략</h1>
-            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.11</p>
+            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.13</p>
             <p class="mt-4 text-lg text-gray-600">5월 MPP 프로젝트 리뷰 기반, 10월 SC 프로젝트 실행 계획</p>
         </header>
 
@@ -304,7 +289,7 @@
             </section>
             
             <section id="logistics">
-                <h2 class="section-title text-center">물류 전략 시나리오</h2>
+                <h2 class="section-title text-center">방송 장비 물류 운영 대시보드</h2>
                  <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-gray-200">
                     <p class="text-center text-gray-600 mb-8">키프로스 프로젝트 및 향후 물류 전략 최적화를 위한 의사결정 지원 시스템</p>
                     <div id="logistics-main">
@@ -317,13 +302,11 @@
                             </div>
                         </section>
                         <section id="scenario-details" class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-inner min-h-[400px]"><div id="scenario-content"></div></section>
-                        <section id="comparison-chart" class="mt-12">
-                            <h3 class="text-xl font-bold text-center mb-6 text-gray-700">2. 시나리오별 효과 비교 분석</h3>
-                            <p class="text-center text-gray-600 mb-8">각 시나리오는 비용, 유연성, 관리 복잡성 측면에서 뚜렷한 장단점을 가집니다.<br class="hidden md:block">아래 차트를 통해 각 항목별 효과를 직관적으로 비교하고 최적의 전략을 선택하세요. (높은 점수 = 긍정적 효과)</p>
-                            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg"><div class="chart-container"><canvas id="scenarioComparisonChart"></canvas></div></div>
-                        </section>
                         <section id="equipment-list" class="mt-12">
-                            <h3 class="text-xl font-bold text-center mb-6 text-gray-700">3. 부록: 지역별 장비 현황</h3>
+                            <div class="text-center mb-6">
+                                <h3 class="text-xl font-bold text-gray-700 inline-block">2. 부록: 지역별 장비 현황</h3>
+                                <a href="https://docs.google.com/spreadsheets/d/19eKY1TjrxigK77KRhkQFhxMPj6dFy1UZ8WUvV7Nt-pM/edit?gid=1154458081#gid=1154458081" target="_blank" class="text-blue-500 hover:underline text-sm ml-2">자세히 보기 →</a>
+                            </div>
                             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
                                 <div class="flex flex-wrap gap-4 mb-6 justify-center">
                                     <div class="flex items-center gap-2"><span class="font-semibold">지역:</span><button class="filter-btn-loc active px-4 py-1.5 bg-blue-500 text-white rounded-full text-sm" data-loc="all">전체</button><button class="filter-btn-loc px-4 py-1.5 bg-gray-200 text-gray-700 rounded-full text-sm" data-loc="Prague">프라하</button><button class="filter-btn-loc px-4 py-1.5 bg-gray-200 text-gray-700 rounded-full text-sm" data-loc="CYPRUS">키프로스</button></div>
@@ -356,7 +339,6 @@
         const scenarioData = {A:{title:'Scenario A: 지역 거점 최적화',strategy:'향후 프로젝트가 불확실하거나, 키프로스에서 연달아 진행될 가능성에 대비. 고가의 핵심 장비만 한국으로 회수하고 나머지는 현지에 유지하여 운송 비용을 최소화하고 효율을 극대화한다.',branches:[{id:'A-1',name:'Option 1: ATA 까르네 이용',phase1:'<div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="text-center">🇨🇿 프라하<br><span class="text-xs text-red-600">(까르네)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇾 키프로스</div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇰🇷 한국</div></div>',phase2_title:'Phase 2: 프로젝트 종료 후 (까르네 의무로 인한 분산)',phase2_result:'<ul class="space-y-2 list-inside list-disc"><li>프라하 장비 → 🇨🇿 프라하 복귀 (까르네 의무)</li><li>키프로스 핵심 장비 → 🇰🇷 한국 운송</li><li>키프로스 잔류 장비 → 🇨🇾 키프로스 잔류</li></ul>',conclusion:'<div class="mt-4 p-3 bg-red-100 text-red-800 rounded-lg text-center font-bold">최종 결과: 물류 거점이 3곳으로 분산 유지. 목표 달성 실패.</div>',pros:['검증된 프로세스','한국팀 이동 동선 단순화'],cons:['까르네 규정상 목표 달성 불가','물류 비효율 유지']},{id:'A-2',name:'Option 2: 직접 운송 (팀 경유)',phase1:'<div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="text-center">🇰🇷 한국<br><span class="text-xs text-blue-600">(팀 출발)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇿 프라하<br><span class="text-xs text-blue-600">(경유 픽업)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇾 키프로스</div></div>',phase2_title:'Phase 2: 프로젝트 종료 후 (거점 최적화)',phase2_result:'<ul class="space-y-2 list-inside list-disc"><li>(구)프라하 + (구)키프로스 핵심 장비 → 🇰🇷 한국 운송 (통합)</li><li>(구)프라하 + (구)키프로스 잔류 장비 → 🇨🇾 키프로스 잔류 (통합)</li></ul>',conclusion:'<div class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg text-center font-bold">최종 결과: 물류 거점이 한국(핵심)과 키프로스(잔류) 2곳으로 최적화. 목표 달성 성공.</div>',pros:['시나리오 목표 달성 가능','운송 비용 최소화 (장기)'],cons:['팀 이동 동선 복잡','초기 경유 비용 발생']}]},B:{title:'Scenario B: 글로벌 운영 베이스 구축',strategy:'이번 기회에 프라하와 키프로스의 모든 장비를 한국으로 들여와, 물류를 일원화하고 향후 모든 프로젝트의 물류 출발점을 한국에서 시작한다.',phase1:'<div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="text-center">🇰🇷 한국<br><span class="text-xs text-blue-600">(팀 출발 & 장비)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇿 프라하<br><span class="text-xs text-blue-600">(경유 픽업)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇾 키프로스</div></div>',phase2_title:'Phase 2: 프로젝트 종료 후 (한국으로 완전 통합)',phase2_result:'<p>(구)프라하 + (구)키프로스 + (구)한국 장비 → 🇰🇷 한국 운송 (전체 통합)</p>',conclusion:'<div class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg text-center font-bold">최종 결과: 모든 장비가 한국으로 통합되어 완벽한 물류 일원화 달성.</div>',pros:['완벽한 물류 일원화','최고 수준의 유연성','장기적 비용 절감'],cons:['초기 운송 비용 가장 높음','대규모 물류 이동 필요']},C:{title:'Scenario C: 기존 위치 복귀 (Status Quo)',strategy:'현재의 분산된 물류 시스템을 그대로 유지한다. 프로젝트 종료 후 모든 장비는 원래 있던 위치(프라하, 키프로스, 한국)로 복귀한다.',phase1:'<div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="text-center">🇨🇿 프라하<br><span class="text-xs text-red-600">(까르네)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇾 키프로스</div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇰🇷 한국</div></div>',phase2_title:'Phase 2: 프로젝트 종료 후 (원위치 복귀)',phase2_result:'<ul class="space-y-2 list-inside list-disc"><li>프라하 장비 → 🇨🇿 프라하 복귀</li><li>키프로스 장비 → 🇨🇾 키프로스 잔류</li><li>한국 장비 → 🇰🇷 한국 복귀</li></ul>',conclusion:'<div class="mt-4 p-3 bg-yellow-100 text-yellow-800 rounded-lg text-center font-bold">최종 결과: 현상 유지. 장기적인 물류 개선은 이루어지지 않음.</div>',pros:['검증된 프로세스','운영 리스크 적음'],cons:['고비용 구조 유지','물류 비효율 유지','장기적 목표 달성 불가']}};
         let currentScenario = 'A';
         let currentFilters = { loc: 'all', type: 'all' };
-        let comparisonChart;
 
         document.addEventListener('DOMContentLoaded', function() {
             // Set dynamic date
@@ -500,7 +482,6 @@
                     });
                 }
                 updateActiveButton();
-                updateChartHighlight();
             }
 
             function renderBranch(scenarioId, branchId) {
@@ -549,31 +530,10 @@
                 e.currentTarget.classList.remove('bg-gray-200', 'text-gray-700');
                 renderTable();
             }));
-
-            function createChart() {
-                const ctx = document.getElementById('scenarioComparisonChart');
-                if (!ctx) return;
-                const data = {labels:['초기 비용 효율','장기 유연성','관리 용이성'],datasets:[{label:'Scenario A',data:[7,6,5],backgroundColor:'rgba(59, 130, 246, 0.5)',borderColor:'rgba(59, 130, 246, 1)',borderWidth:1},{label:'Scenario B',data:[3,10,9],backgroundColor:'rgba(16, 185, 129, 0.5)',borderColor:'rgba(16, 185, 129, 1)',borderWidth:1},{label:'Scenario C',data:[9,2,3],backgroundColor:'rgba(239, 68, 68, 0.5)',borderColor:'rgba(239, 68, 68, 1)',borderWidth:1}]};
-                const options = {indexAxis:'y',responsive:true,maintainAspectRatio:false,scales:{x:{beginAtZero:true,max:10,grid:{color:'#E5E7EB'}},y:{grid:{display:false}}},plugins:{legend:{position:'top'},tooltip:{callbacks:{label:function(context){let label=context.dataset.label||'';if(label){label+=': '}if(context.parsed.x!==null){label+=context.parsed.x+'점'}return label;}}}}};
-                comparisonChart = new Chart(ctx, { type: 'bar', data: data, options: options });
-            }
-
-            function updateChartHighlight() {
-                if (!comparisonChart) return;
-                const opacities = { A: [0.8, 0.2, 0.2], B: [0.2, 0.8, 0.2], C: [0.2, 0.2, 0.8] };
-                const borderWidths = { A: [2, 1, 1], B: [1, 2, 1], C: [1, 1, 2] };
-                comparisonChart.data.datasets.forEach((dataset, index) => {
-                    const color = dataset.borderColor.replace('1)', `${opacities[currentScenario][index]})`);
-                    dataset.backgroundColor = color;
-                    dataset.borderWidth = borderWidths[currentScenario][index];
-                });
-                comparisonChart.update();
-            }
             
             if (document.getElementById('logistics')) {
                 renderScenario('A');
                 renderTable();
-                createChart();
             }
         });
     </script>
