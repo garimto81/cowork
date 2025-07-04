@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.15</title>
+    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.29</title>
     
     <!-- Chosen Palette: Calm Neutral Professional -->
     <!-- Application Structure Plan: 기획서의 논리적 흐름을 그대로 따르는 단일 페이지 대시보드 형식으로 설계했습니다. 사용자는 스크롤을 통해 '업무 방식 개선 → 현황 진단 → 핵심 과제 → 안정성 강화 → 운영 프로세스' 순으로 자연스럽게 계획을 파악할 수 있습니다. 각 섹션은 정보 카드, 시각적 다이어그램, 인터랙티브 탭과 같은 요소를 사용하여 정적인 문서보다 높은 가독성과 정보 전달력을 갖도록 구성했습니다. 이를 통해 사용자는 계획의 전체적인 맥락과 세부 실행 방안을 더 쉽게 이해하고 탐색할 수 있습니다. -->
@@ -113,16 +113,6 @@
             color: #3B82F6; /* blue-500 */
         }
         /* Logistics Section Styles */
-        .scenario-btn {
-            transition: all 0.3s ease;
-        }
-        .scenario-btn.active {
-            background-color: #3B82F6; /* blue-500 */
-            color: white;
-            font-weight: 700;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
         .flow-arrow {
             position: relative;
             width: 100%;
@@ -137,6 +127,14 @@
             transform: translateY(-50%);
             color: #9CA3AF; /* gray-400 */
             font-size: 1rem;
+        }
+        .logistics-card.disabled {
+            opacity: 0.5;
+            background-color: #F3F4F6;
+            cursor: not-allowed;
+        }
+        .logistics-card.disabled .font-bold {
+            text-decoration: line-through;
         }
     </style>
 </head>
@@ -172,7 +170,7 @@
 
         <header class="text-center my-8 md:my-12">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 whitespace-nowrap">2025 WSOP SC CYPRUS 카메라 파트 전략</h1>
-            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.15</p>
+            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.22</p>
             <p class="mt-4 text-lg text-gray-600">5월 MPP 프로젝트 리뷰 기반, 10월 SC 프로젝트 실행 계획</p>
         </header>
 
@@ -216,11 +214,7 @@
                                 <div class="flex-grow text-center sm:text-left"><h3 class="font-bold text-xl mb-2 text-green-800">운영 시스템 안정화</h3><p class="text-gray-600">현장 오류율을 최소화하기 위해 탈리, 하이브리드 스위처 등 안정성 강화 시스템 도입 및 테스트를 완료합니다.</p><p class="mt-2 text-sm"><strong class="text-gray-900">핵심 목표:</strong> 핵심 안정화 시스템 도입 및 검증</p></div>
                             </div>
                         </div>
-                        <div class="roadmap-overlay absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 p-2">
-                             <a href="https://garimto81.github.io/switcher/" target="_blank" class="text-white font-bold text-base md:text-lg hover:underline p-1 md:p-2">하이브리드 스위처 시스템 →</a>
-                             <a href="https://kai-kim87.github.io/my-second4-webpage/" target="_blank" class="text-white font-bold text-base md:text-lg hover:underline p-1 md:p-2">탈리 시스템 도입 →</a>
-                             <a href="https://garimto81.github.io/realtime/" target="_blank" class="text-white font-bold text-base md:text-lg hover:underline p-1 md:p-2">실시간 모니터링 시스템 →</a>
-                        </div>
+                        <div class="roadmap-overlay absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 p-2"><a href="https://garimto81.github.io/switcher/" target="_blank" class="text-white font-bold text-base md:text-lg hover:underline p-1 md:p-2">하이브리드 스위처 시스템 →</a><a href="https://kai-kim87.github.io/my-second4-webpage/" target="_blank" class="text-white font-bold text-base md:text-lg hover:underline p-1 md:p-2">탈리 시스템 도입 →</a><a href="https://garimto81.github.io/realtime/" target="_blank" class="text-white font-bold text-base md:text-lg hover:underline p-1 md:p-2">실시간 모니터링 시스템 →</a></div>
                     </div>
                     <div class="card overflow-hidden">
                         <div class="p-6 border-l-8 border-purple-500">
@@ -244,7 +238,14 @@
             <!-- 핵심 전략 -->
             <section id="strategy">
                 <h2 class="section-title text-center">이중적 "엣지" 구현</h2>
-                <div class="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto"><div class="card p-8 rounded-xl shadow-lg"><div class="flex items-center mb-4"><span class="text-3xl mr-4">💎</span><h3 class="text-2xl font-bold text-gray-800">보편적 엣지 (Universal Edge)</h3></div><p class="text-gray-600 mb-2 font-semibold">"정적 화면의 정점"</p><p class="text-gray-600">플레이어 미드 샷을 포함한 모든 기본 샷에서 일관되게 구현되는 최고 수준의 A컷. <br> 모든 샷을 완벽하게 계산된 사진 작품처럼 구성하여, <br> 방송 전체의 기본 품질을 격상시키고 지속적인 몰입감을 제공합니다.</p></div><div class="card p-8 rounded-xl shadow-lg relative group overflow-hidden"><div class="flex items-center mb-4"><span class="text-3xl mr-4">🔥</span><h3 class="text-2xl font-bold text-gray-800">킥 엣지 (Kick Edge)</h3></div><p class="text-gray-600 mb-2 font-semibold">"핵심 핸드의 다이나믹한 연출"</p><p class="text-gray-600">대회의 가장 중요한 분기점에서 펼쳐지는 특별한 숏 시퀀스. <br> 빅팟 올인, 중요 인물의 탈락 위기 등 주요 순간에 극적인 연출을 도입하여 시청자에게 강렬한 드라마와 감동을 선사합니다.</p><div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center space-y-4 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"><button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/QP5TZGTR3B8?start=28293&autoplay=1&mute=1">▶ 레퍼런스 #01</button><button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/6kdfG00zYCI?start=8142&autoplay=1&mute=1">▶ 레퍼런스 #02</button></div></div></div>
+                <div class="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+                    <a href="https://garimto81.github.io/camtest/" target="_blank" class="block card p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4"><span class="text-3xl mr-4">💎</span><h3 class="text-2xl font-bold text-gray-800">보편적 엣지 (Universal Edge)</h3></div>
+                        <p class="text-gray-600 mb-2 font-semibold">"정적 화면의 정점"</p>
+                        <p class="text-gray-600">플레이어 미드 샷을 포함한 모든 기본 샷에서 일관되게 구현되는 최고 수준의 A컷. <br> 모든 샷을 완벽하게 계산된 사진 작품처럼 구성하여, <br> 방송 전체의 기본 품질을 격상시키고 지속적인 몰입감을 제공합니다.</p>
+                    </a>
+                    <div class="card p-8 rounded-xl shadow-lg relative group overflow-hidden"><div class="flex items-center mb-4"><span class="text-3xl mr-4">🔥</span><h3 class="text-2xl font-bold text-gray-800">킥 엣지 (Kick Edge)</h3></div><p class="text-gray-600 mb-2 font-semibold">"핵심 핸드의 다이나믹한 연출"</p><p class="text-gray-600">대회의 가장 중요한 분기점에서 펼쳐지는 특별한 숏 시퀀스. <br> 빅팟 올인, 중요 인물의 탈락 위기 등 주요 순간에 극적인 연출을 도입하여 시청자에게 강렬한 드라마와 감동을 선사합니다.</p><div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center space-y-4 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"><button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/QP5TZGTR3B8?start=28293&autoplay=1&mute=1">▶ 레퍼런스 #01</button><button class="ref-btn text-white font-bold py-2 px-4 rounded-lg w-full kick-edge-ref-btn" data-url="https://www.youtube.com/embed/6kdfG00zYCI?start=8142&autoplay=1&mute=1">▶ 레퍼런스 #02</button></div></div>
+                </div>
             </section>
 
             <!-- 장비 구성 진화 -->
@@ -257,7 +258,7 @@
                         <button class="setup-tab-btn tab-btn" data-target="panel-may-final">5월 MPP 후기</button>
                         <button class="setup-tab-btn tab-btn" data-target="panel-oct">10월 WSOP SC</button>
                     </div>
-                    <div id="panel-may-initial" class="setup-panel"><p class="text-center font-semibold text-gray-700 mb-4">기본 8캠 시스템으로 안정적 운영에 집중</p><div class="relative max-w-6xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8"><div class="absolute w-full h-full flex items-center justify-center"><div class="w-[60%] h-[55%] bg-gray-500 border-8 border-gray-700 rounded-[50%] flex items-center justify-center text-white font-bold relative"><div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div><div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div></div></div><div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div><div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div><div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div><div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div><div class="absolute top-0 right-[20%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div><div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div></div><ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-5xl mx-auto"><li>📹 Sony FR7 (PTZ) x 4</li><li>📹 보드 캠 (FR7) x 1</li><li>📷 탑 캠 (Overhead) x 1</li><li>🎥 프리 캠 (Freelance) x 1</li><li>� 풀 샷 캠 (Full Shot) x 1</li><li class="font-bold col-span-full sm:col-auto">총 8대 / 테이블</li></ul></div>
+                    <div id="panel-may-initial" class="setup-panel"><p class="text-center font-semibold text-gray-700 mb-4">기본 8캠 시스템으로 안정적 운영에 집중</p><div class="relative max-w-6xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8"><div class="absolute w-full h-full flex items-center justify-center"><div class="w-[60%] h-[55%] bg-gray-500 border-8 border-gray-700 rounded-[50%] flex items-center justify-center text-white font-bold relative"><div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div><div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div></div></div><div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div><div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div><div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div><div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div><div class="absolute top-0 right-[20%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div><div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div></div><ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-5xl mx-auto"><li>📹 Sony FR7 (PTZ) x 4</li><li>📹 보드 캠 (FR7) x 1</li><li>📷 탑 캠 (Overhead) x 1</li><li>🎥 프리 캠 (Freelance) x 1</li><li>🎥 풀 샷 캠 (Full Shot) x 1</li><li class="font-bold col-span-full sm:col-auto">총 8대 / 테이블</li></ul></div>
                     <div id="panel-may-final" class="setup-panel hidden"><p class="text-center font-semibold text-gray-700 mb-4">인물 고정 캠 추가로 A컷 안정화</p><div class="relative max-w-6xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8"><div class="absolute w-full h-full flex items-center justify-center"><div class="w-[60%] h-[55%] bg-gray-500 border-8 border-gray-700 rounded-[50%] flex items-center justify-center text-white font-bold relative"><div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div><div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div></div></div><div class="absolute top-[20%] left-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-gray-400">🎥</div><span class="text-xs font-semibold">인물 고정 캠</span></div><div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div><div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div><div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div><div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div><div class="absolute top-0 right-[20%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div><div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div></div><ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-5xl mx-auto"><li>📹 Sony FR7 (PTZ) x 4</li><li>🎥 인물 고정 캠 x 1</li><li>📹 보드 캠 (FR7) x 1</li><li>📷 탑 캠 (Overhead) x 1</li><li>🎥 프리 캠 (Freelance) x 1</li><li>🎥 풀 샷 캠 (Full Shot) x 1</li><li class="font-bold col-span-full sm:col-auto">총 9대 / 테이블</li></ul></div>
                     <div id="panel-oct" class="setup-panel hidden"><p class="text-center font-semibold text-gray-700 mb-4">전체 FR7 시스템으로 업그레이드하여 퀄리티 표준화 (총 10캠)</p><div class="relative max-w-6xl mx-auto aspect-[16/9] flex items-center justify-center p-4 sm:p-8"><div class="absolute w-full h-full flex items-center justify-center"><div class="w-[60%] h-[55%] bg-blue-800 border-8 border-yellow-400 rounded-[50%] flex items-center justify-center text-white font-bold relative"><div class="absolute bottom-2 bg-slate-900 px-4 py-1 rounded-md text-sm shadow-lg">Dealer</div><div class="absolute text-center"><div class="flex items-center gap-1 text-sm">📷<span class="hidden sm:inline">탑 캠</span></div><div class="flex items-center gap-1 text-sm">📹<span class="hidden sm:inline">보드 캠</span></div></div></div></div><div class="absolute top-[20%] left-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #5</span></div><div class="absolute top-[55%] left-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #4</span></div><div class="absolute bottom-[5%] left-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #3</span></div><div class="absolute bottom-[5%] right-[15%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #2</span></div><div class="absolute top-[55%] right-0 text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #1</span></div><div class="absolute top-[20%] right-[5%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-yellow-400">📹</div><span class="text-xs font-semibold">FR7 #6</span></div><div class="absolute top-0 right-[25%] text-center camera-icon"><div class="text-2xl sm:text-4xl text-green-500">🎥</div><span class="text-xs font-semibold">Free Cam</span></div><div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center camera-icon"><div class="text-2xl sm:text-4xl text-purple-500">🎥</div><span class="text-xs font-semibold">Full Shot</span></div></div><ul class="mt-8 text-center text-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-2 max-w-5xl mx-auto"><li>📹 Sony FR7 (PTZ) x 6</li><li>📹 보드 캠 (FR7) x 1</li><li>📷 탑 캠 (Overhead) x 1</li><li>🎥 프리 캠 (Freelance) x 1</li><li>🎥 풀 샷 캠 (Full Shot) x 1</li><li class="font-bold col-span-full sm:col-auto">총 10대 / 테이블</li></ul></div>
                 </div>
@@ -269,24 +270,59 @@
                 <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-gray-200">
                     <p class="text-center text-gray-600 mb-8">각 시나리오를 선택하여 인원 편제와 담당 공간 구성을 확인하세요.</p>
                     <div class="flex flex-wrap justify-center border-b border-gray-200 mb-8">
-                        <button class="process-tab-btn tab-btn active" data-target="option1-process">옵션 1: 5월 MPP 기반</button>
+                        <button class="process-tab-btn tab-btn active" data-target="option0-process">옵션 0: 원격+현장</button>
+                        <button class="process-tab-btn tab-btn" data-target="option1-process">옵션 1: 5월 MPP 기반</button>
                         <button class="process-tab-btn tab-btn" data-target="option2-process">옵션 2: GGP 전체 통제</button>
                         <button class="process-tab-btn tab-btn" data-target="option3-process">옵션 3: 하이브리드</button>
                     </div>
 
+                    <!-- Option 0 Panel -->
+                    <div id="option0-process" class="process-panel">
+                        <div class="border-2 border-sky-200 rounded-lg p-6 bg-sky-50/50">
+                            <h3 class="text-2xl font-bold text-center mb-8 text-sky-700">옵션 0: 원격 + 현장 하이브리드</h3>
+                            <div class="grid lg:grid-cols-2 gap-10 items-start">
+                                <div>
+                                    <h4 class="font-bold text-lg mb-4 text-center text-gray-800">인원 구성</h4>
+                                    <div class="bg-white rounded-lg p-4 shadow"><table class="w-full text-left text-sm"><thead><tr class="border-b border-gray-300"><th class="py-2 font-semibold text-gray-700">역할</th><th class="py-2 font-semibold text-center text-sky-600">인원</th></tr></thead><tbody class="divide-y divide-gray-200"><tr><td class="py-3">비즈니스 커뮤니케이션</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3">현장 총괄 감독</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3 font-medium">현장 컨트롤룸 (Sub A)</td><td class="py-3 text-center font-semibold">스위처 1명, FR7 1명</td></tr><tr><td class="py-3 font-medium">원격 컨트롤룸 (Sub B)</td><td class="py-3 text-center font-semibold">스위처 1명, FR7 1명</td></tr><tr><td class="py-3">현장 운영</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠 감독</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠 촬영 감독</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr></tbody></table></div>
+                                </div>
+                                <div class="flex flex-col items-center space-y-4">
+                                    <h4 class="font-bold text-lg mb-4 text-center text-gray-800">공간 구성</h4>
+                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200">
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                            <div class="text-center bg-blue-200 p-2 rounded-lg"><p class="font-bold text-blue-800">비즈니스 커뮤니케이션: 1명</p></div>
+                                            <div class="text-center bg-gray-200 p-2 rounded-lg"><p class="font-bold text-gray-700">현장 총괄 감독: 1명</p></div>
+                                        </div>
+                                        <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                                            <div class="w-full bg-white p-4 rounded-lg border"><h5 class="text-center font-bold mb-4 text-gray-600">무대 (Stage)</h5><div class="flex justify-around items-start mb-4"><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-32 w-32 md:h-36 md:w-36 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-sm md:text-base font-bold text-white">메인 피처</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-red-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">카라펫</div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 A</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP 현장</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">스위처: 1명<br>FR7: 1명<br>프리 카메라: 1명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 B</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-sky-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP 원격</span></div></div></div></div>
+                                            <div class="w-full bg-white p-4 rounded-lg border"><h5 class="text-center font-bold text-gray-600">대회장 (Venue Floor)</h5><div class="mt-2 flex flex-col items-center gap-2 h-full justify-center"><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">현장 운영: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠 감독: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠 촬영 감독: ?</p></div></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Option 1 Panel -->
-                    <div id="option1-process" class="process-panel">
+                    <div id="option1-process" class="process-panel hidden">
                         <div class="border-2 border-indigo-200 rounded-lg p-6 bg-indigo-50/50">
                             <h3 class="text-2xl font-bold text-center mb-8 text-indigo-700">옵션 1: 5월 MPP 세팅 기반</h3>
                             <div class="grid lg:grid-cols-2 gap-10 items-start">
                                 <div>
-                                    <h4 class="font-bold text-lg mb-4 text-center text-gray-800">인원 구성 비교</h4>
-                                    <div class="bg-white rounded-lg p-4 shadow"><table class="w-full text-left text-sm"><thead><tr class="border-b border-gray-300"><th class="py-2 font-semibold text-gray-700">역할</th><th class="py-2 font-semibold text-center text-cyan-600">5월 MPP</th><th class="py-2 font-semibold text-center text-amber-600">10월 WSOP SC</th></tr></thead><tbody class="divide-y divide-gray-200"><tr><td class="py-3">PM (커뮤니케이션)</td><td class="py-3 text-center font-semibold">1명</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3">현장 운영</td><td class="py-3 text-center font-semibold">2명</td><td class="py-3 text-center font-semibold">2명</td></tr><tr><td class="py-3">컨트롤룸</td><td class="py-3 text-center font-semibold">4명</td><td class="py-3 text-center font-semibold">4명</td></tr><tr><td class="py-3 flex items-center">컨트롤룸 커뮤니케이션 <span class="new-badge">NEW</span></td><td class="py-3 text-center text-gray-400">-</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3 flex items-center">소프트 콘텐츠 <span class="new-badge">NEW</span></td><td class="py-3 text-center text-gray-400">-</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr></tbody><tfoot><tr class="border-t-2 border-gray-400"><td class="pt-3 font-bold text-base">총 합계</td><td class="pt-3 text-center font-bold text-base text-cyan-600">7명</td><td class="pt-3 text-center font-bold text-base text-amber-600">7명 + ?</td></tr></tfoot></table></div>
+                                    <h4 class="font-bold text-lg mb-4 text-center text-gray-800">인원 구성</h4>
+                                    <div class="bg-white rounded-lg p-4 shadow"><table class="w-full text-left text-sm"><thead><tr class="border-b border-gray-300"><th class="py-2 font-semibold text-gray-700">역할</th><th class="py-2 font-semibold text-center text-indigo-600">인원</th></tr></thead><tbody class="divide-y divide-gray-200"><tr><td class="py-3">비즈니스 커뮤니케이션</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3">현장 총괄 감독</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3 font-medium">컨트롤룸 (2개조)</td><td class="py-3 text-center font-semibold">스위처 2명, FR7 2명</td></tr><tr><td class="py-3">현장 운영</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠 감독</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠 촬영 감독</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr></tbody></table></div>
                                 </div>
                                 <div class="flex flex-col items-center space-y-4">
-                                    <h4 class="font-bold text-lg mb-4 text-center text-gray-800">10월 프로젝트 공간 구성</h4>
-                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold mb-4 text-gray-600">무대 (Stage)</h5><div class="flex justify-around items-start mb-4"><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 1</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-32 w-32 md:h-36 md:w-36 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-sm md:text-base font-bold text-white">메인 피처</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-red-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">카라펫</div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 2</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div></div><div class="text-center bg-gray-200 p-2 rounded-lg mt-4"><p class="font-bold text-gray-600">컨트롤룸 커뮤니케이션: ?</p></div></div>
-                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold text-gray-600">대회장 (Venue Floor)</h5><div class="mt-2 flex flex-col items-center gap-2 h-full justify-center"><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-700">PM (커뮤니케이션): 1명</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-indigo-600">현장 운영: 2명</p></div></div></div>
+                                    <h4 class="font-bold text-lg mb-4 text-center text-gray-800">공간 구성</h4>
+                                     <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200">
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                            <div class="text-center bg-blue-200 p-2 rounded-lg"><p class="font-bold text-blue-800">비즈니스 커뮤니케이션: 1명</p></div>
+                                            <div class="text-center bg-gray-200 p-2 rounded-lg"><p class="font-bold text-gray-700">현장 총괄 감독: 1명</p></div>
+                                        </div>
+                                        <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                                            <div class="w-full bg-white p-4 rounded-lg border"><h5 class="text-center font-bold mb-4 text-gray-600">무대 (Stage)</h5><div class="flex justify-around items-start mb-4"><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 1</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">스위처: 1명<br>FR7: 1명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-32 w-32 md:h-36 md:w-36 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-sm md:text-base font-bold text-white">메인 피처</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-red-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">카라펫</div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 2</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">스위처: 1명<br>FR7: 1명</p></div></div></div></div>
+                                            <div class="w-full bg-white p-4 rounded-lg border"><h5 class="text-center font-bold text-gray-600">대회장 (Venue Floor)</h5><div class="mt-2 flex flex-col items-center gap-2 h-full justify-center"><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">현장 운영: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠 감독: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠 촬영 감독: ?</p></div></div></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -298,12 +334,20 @@
                             <div class="grid lg:grid-cols-2 gap-10 items-start">
                                 <div>
                                     <h4 class="font-bold text-lg mb-4 text-center">인원 구성</h4>
-                                    <div class="bg-white rounded-lg p-4 shadow"><table class="w-full text-left text-sm"><thead><tr class="border-b border-gray-300"><th class="py-2 font-semibold">역할</th><th class="py-2 font-semibold text-center text-purple-600">인원</th></tr></thead><tbody class="divide-y divide-gray-200"><tr><td class="py-3">PM (커뮤니케이션)</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3">현장 운영</td><td class="py-3 text-center font-semibold">2명</td></tr><tr><td class="py-3">컨트롤룸</td><td class="py-3 text-center font-semibold">6명</td></tr><tr><td class="py-3">컨트롤룸 커뮤니케이션</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr></tbody><tfoot><tr class="border-t-2 border-gray-400"><td class="pt-3 font-bold text-base">총 합계</td><td class="pt-3 text-center font-bold text-base text-purple-600">9명 + ?</td></tr></tfoot></table></div>
+                                    <div class="bg-white rounded-lg p-4 shadow"><table class="w-full text-left text-sm"><thead><tr class="border-b border-gray-300"><th class="py-2 font-semibold">역할</th><th class="py-2 font-semibold text-center text-purple-600">인원</th></tr></thead><tbody class="divide-y divide-gray-200"><tr><td class="py-3">비즈니스 커뮤니케이션</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3">현장 총괄 감독</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3 font-medium">컨트롤룸 (3개조)</td><td class="py-3 text-center font-semibold">스위처 3명, FR7 3명</td></tr><tr><td class="py-3">현장 운영</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠 감독</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠 촬영 감독</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr></tbody></table></div>
                                 </div>
                                 <div class="flex flex-col items-center space-y-4">
                                     <h4 class="font-bold text-lg mb-4 text-center">공간 구성</h4>
-                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold mb-4 text-gray-600">무대 (Stage)</h5><div class="flex justify-around items-start mb-4"><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 1</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-32 w-32 md:h-36 md:w-36 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-sm md:text-base font-bold text-white">메인 피처</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 2</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div></div><div class="text-center bg-gray-200 p-2 rounded-lg mt-4"><p class="font-bold text-gray-600">컨트롤룸 커뮤니케이션: ?</p></div></div>
-                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold text-gray-600">대회장 (Venue Floor)</h5><div class="mt-2 flex flex-col items-center gap-2 h-full justify-center"><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-700">PM (커뮤니케이션): 1명</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-purple-600">현장 운영: 2명</p></div></div></div>
+                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200">
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                            <div class="text-center bg-blue-200 p-2 rounded-lg"><p class="font-bold text-blue-800">비즈니스 커뮤니케이션: 1명</p></div>
+                                            <div class="text-center bg-gray-200 p-2 rounded-lg"><p class="font-bold text-gray-700">현장 총괄 감독: 1명</p></div>
+                                        </div>
+                                        <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                                            <div class="w-full bg-white p-4 rounded-lg border"><h5 class="text-center font-bold mb-4 text-gray-600">무대 (Stage)</h5><div class="flex justify-around items-start mb-4"><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 1</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">스위처: 1명<br>FR7: 1명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-32 w-32 md:h-36 md:w-36 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-sm md:text-base font-bold text-white">메인 피처</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">스위처: 1명<br>FR7: 1명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 2</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">스위처: 1명<br>FR7: 1명</p></div></div></div></div>
+                                            <div class="w-full bg-white p-4 rounded-lg border"><h5 class="text-center font-bold text-gray-600">대회장 (Venue Floor)</h5><div class="mt-2 flex flex-col items-center gap-2 h-full justify-center"><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">현장 운영: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠 감독: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠 촬영 감독: ?</p></div></div></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -315,12 +359,20 @@
                             <div class="grid lg:grid-cols-2 gap-10 items-start">
                                 <div>
                                     <h4 class="font-bold text-lg mb-4 text-center">인원 구성</h4>
-                                    <div class="bg-white rounded-lg p-4 shadow"><table class="w-full text-left text-sm"><thead><tr class="border-b border-gray-300"><th class="py-2 font-semibold">역할</th><th class="py-2 font-semibold text-center text-teal-600">인원</th></tr></thead><tbody class="divide-y divide-gray-200"><tr><td class="py-3">PM (커뮤니케이션)</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3">현장 운영</td><td class="py-3 text-center font-semibold">2명</td></tr><tr><td class="py-3">컨트롤룸</td><td class="py-3 text-center font-semibold">4명</td></tr><tr><td class="py-3">컨트롤룸 커뮤니케이션</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr></tbody><tfoot><tr class="border-t-2 border-gray-400"><td class="pt-3 font-bold text-base">총 합계</td><td class="pt-3 text-center font-bold text-base text-teal-600">7명 + ?</td></tr></tfoot></table></div>
+                                    <div class="bg-white rounded-lg p-4 shadow"><table class="w-full text-left text-sm"><thead><tr class="border-b border-gray-300"><th class="py-2 font-semibold">역할</th><th class="py-2 font-semibold text-center text-teal-600">인원</th></tr></thead><tbody class="divide-y divide-gray-200"><tr><td class="py-3">비즈니스 커뮤니케이션</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3">현장 총괄 감독</td><td class="py-3 text-center font-semibold">1명</td></tr><tr><td class="py-3 font-medium">컨트롤룸 (2개조)</td><td class="py-3 text-center font-semibold">스위처 2명, FR7 2명</td></tr><tr><td class="py-3">현장 운영</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠 감독</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr><tr><td class="py-3">소프트 콘텐츠 촬영 감독</td><td class="py-3 text-center font-bold text-gray-500">?</td></tr></tbody></table></div>
                                 </div>
                                 <div class="flex flex-col items-center space-y-4">
                                     <h4 class="font-bold text-lg mb-4 text-center">공간 구성</h4>
-                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold mb-4 text-gray-600">무대 (Stage)</h5><div class="flex justify-around items-start mb-4"><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 1</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-32 w-32 md:h-36 md:w-36 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-sm md:text-base font-bold text-white">메인 피처</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">컨트롤룸: 2명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 2</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-red-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">카라펫</div></div></div><div class="text-center bg-gray-200 p-2 rounded-lg mt-4"><p class="font-bold text-gray-600">컨트롤룸 커뮤니케이션: ?</p></div></div>
-                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200"><h5 class="text-center font-bold text-gray-600">대회장 (Venue Floor)</h5><div class="mt-2 flex flex-col items-center gap-2 h-full justify-center"><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-700">PM (커뮤니케이션): 1명</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-teal-600">현장 운영: 2명</p></div></div></div>
+                                    <div class="w-full bg-gray-100 rounded-lg p-4 border border-gray-200">
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                            <div class="text-center bg-blue-200 p-2 rounded-lg"><p class="font-bold text-blue-800">비즈니스 커뮤니케이션: 1명</p></div>
+                                            <div class="text-center bg-gray-200 p-2 rounded-lg"><p class="font-bold text-gray-700">현장 총괄 감독: 1명</p></div>
+                                        </div>
+                                        <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                                            <div class="w-full bg-white p-4 rounded-lg border"><h5 class="text-center font-bold mb-4 text-gray-600">무대 (Stage)</h5><div class="flex justify-around items-start mb-4"><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 1</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">스위처: 1명<br>FR7: 1명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-32 w-32 md:h-36 md:w-36 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-sm md:text-base font-bold text-white">메인 피처</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">GGP</div><div class="mt-2 text-center bg-gray-200 p-1 rounded-lg text-xs"><p class="font-bold text-gray-600">스위처: 1명<br>FR7: 1명</p></div></div><div class="relative text-center flex-1"><div class="poker-table mx-auto rounded-full h-24 w-24 md:h-28 md:w-28 flex items-center justify-center"><div class="table-surface rounded-full flex items-center justify-center"><span class="text-xs md:text-sm font-bold text-white">서브 2</span></div></div><div class="absolute -top-1 left-1/2 -translate-x-1/2 bg-red-600 text-white px-2 py-0.5 text-xs font-bold rounded-md shadow-lg">카라펫</div></div></div></div>
+                                            <div class="w-full bg-white p-4 rounded-lg border"><h5 class="text-center font-bold text-gray-600">대회장 (Venue Floor)</h5><div class="mt-2 flex flex-col items-center gap-2 h-full justify-center"><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">현장 운영: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠 감독: ?</p></div><div class="text-center bg-gray-200 p-2 rounded-lg w-4/5"><p class="font-bold text-gray-500">소프트 콘텐츠 촬영 감독: ?</p></div></div></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -329,22 +381,58 @@
             </section>
             
             <section id="logistics">
-                <h2 class="section-title text-center">방송 장비 물류 운영 대시보드</h2>
+                <h2 class="section-title text-center">물류 운영</h2>
                  <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-gray-200">
-                    <p class="text-center text-gray-600 mb-8">키프로스 프로젝트 및 향후 물류 전략 최적화를 위한 의사결정 지원 시스템</p>
                     <div id="logistics-main">
-                        <section id="scenario-selector" class="mb-12">
-                            <h3 class="text-xl font-bold text-center mb-6 text-gray-700">1. 물류 운영 시나리오 선택</h3>
-                            <div class="flex flex-wrap justify-center gap-3 md:gap-6">
-                                <button id="btn-scenario-A" class="scenario-btn w-full md:w-auto text-lg px-8 py-4 bg-white rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 border border-gray-200"><span class="font-bold">Scenario A:</span> 지역 거점 최적화</button>
-                                <button id="btn-scenario-B" class="scenario-btn w-full md:w-auto text-lg px-8 py-4 bg-white rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 border border-gray-200"><span class="font-bold">Scenario B:</span> 글로벌 베이스 구축</button>
-                                <button id="btn-scenario-C" class="scenario-btn w-full md:w-auto text-lg px-8 py-4 bg-white rounded-lg shadow-md hover:shadow-xl hover:-translate-y-1 border border-gray-200"><span class="font-bold">Scenario C:</span> 기존 위치 복귀</button>
+                        <section id="logistics-phase1" class="mb-12">
+                            <h3 class="text-xl font-bold text-center mb-6 text-gray-700">Phase 1: 키프로스 물류 취합 전략</h3>
+                            <div class="grid md:grid-cols-3 gap-8">
+                                <div class="card p-6 border-t-4 border-blue-400">
+                                    <h4 class="font-bold text-lg mb-2">옵션 1: ATA 까르네 이용</h4>
+                                    <p class="text-sm text-gray-600 mb-4">프라하 장비를 까르네를 이용해 키프로스로 운송합니다.</p>
+                                    <div class="p-4 border rounded-lg bg-gray-50 mb-4"><div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="text-center">🇨🇿 프라하<br><span class="text-xs text-red-600">(까르네)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇾 키프로스</div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇰🇷 한국</div></div></div>
+                                    <div class="text-sm"><span class="font-semibold text-green-600">장점:</span> 검증된 프로세스, 단순한 동선</div>
+                                    <div class="text-sm"><span class="font-semibold text-red-600">단점:</span> 종료 후 프라하 복귀 필수</div>
+                                </div>
+                                <div class="card p-6 border-t-4 border-green-400">
+                                    <h4 class="font-bold text-lg mb-2">옵션 2: 팀 직접 운송</h4>
+                                    <p class="text-sm text-gray-600 mb-4">한국팀이 프라하를 경유하여 장비를 직접 픽업합니다.</p>
+                                    <div class="p-4 border rounded-lg bg-gray-50 mb-4"><div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="text-center">🇰🇷 한국<br><span class="text-xs text-blue-600">(팀 출발)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇿 프라하<br><span class="text-xs text-blue-600">(경유 픽업)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇾 키프로스</div></div></div>
+                                    <div class="text-sm"><span class="font-semibold text-green-600">장점:</span> 높은 물류 유연성 확보</div>
+                                    <div class="text-sm"><span class="font-semibold text-red-600">단점:</span> 복잡한 동선, 초기 비용 발생</div>
+                                </div>
+                                <div class="card p-6 border-t-4 border-orange-400">
+                                    <h4 class="font-bold text-lg mb-2">옵션 3: 프라하 → 키프로스 수출</h4>
+                                    <p class="text-sm text-gray-600 mb-4">프라하 장비를 키프로스로 정식 수출하여 소유권을 이전합니다.</p>
+                                    <div class="p-4 border rounded-lg bg-gray-50 mb-4"><div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="text-center">🇨🇿 프라하</div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇾 키프로스</div></div></div>
+                                    <div class="text-sm"><span class="font-semibold text-green-600">장점:</span> 까르네 기간 만료 문제 해결, 물류 유연성 확보</div>
+                                    <div class="text-sm"><span class="font-semibold text-red-600">단점:</span> 수출입 절차 복잡, 관세/부가세 발생 가능성</div>
+                                </div>
                             </div>
                         </section>
-                        <section id="scenario-details" class="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-inner min-h-[400px]"><div id="scenario-content"></div></section>
+                        <section id="logistics-phase2" class="mb-12">
+                            <h3 class="text-xl font-bold text-center mb-6 text-gray-700">Phase 2: 프로젝트 종료 후 물류 운송 전략</h3>
+                            <div class="grid md:grid-cols-3 gap-8">
+                                <div class="card p-6 border-t-4 border-purple-400">
+                                     <h4 class="font-bold text-lg mb-2">시나리오 A: 지역 거점 최적화</h4>
+                                     <p class="text-sm text-gray-600 flex-grow">핵심 장비는 한국으로, 나머지는 키프로스에 보관하여 새로운 유럽 거점으로 활용합니다.</p>
+                                     <div class="mt-4 pt-2 border-t text-sm"><span class="font-semibold">결과:</span> 물류 거점 2곳으로 최적화</div>
+                                </div>
+                                <div class="card p-6 border-t-4 border-emerald-400">
+                                    <h4 class="font-bold text-lg mb-2">시나리오 B: 글로벌 베이스 구축</h4>
+                                    <p class="text-sm text-gray-600 flex-grow">모든 장비를 한국으로 통합하여 물류를 일원화합니다.</p>
+                                    <div class="mt-4 pt-2 border-t text-sm"><span class="font-semibold">결과:</span> 완벽한 물류 일원화</div>
+                                </div>
+                                <div class="card p-6 border-t-4 border-orange-400">
+                                    <h4 class="font-bold text-lg mb-2">시나리오 C: 현상 유지</h4>
+                                    <p class="text-sm text-gray-600 flex-grow">모든 장비를 원래 위치로 복귀시켜 현재의 분산 시스템을 유지합니다.</p>
+                                    <div class="mt-4 pt-2 border-t text-sm"><span class="font-semibold">결과:</span> 장기적 개선 없음</div>
+                                </div>
+                            </div>
+                        </section>
                         <section id="equipment-list" class="mt-12">
                             <div class="text-center mb-6">
-                                <h3 class="text-xl font-bold text-gray-700 inline-block">2. 부록: 지역별 장비 현황</h3>
+                                <h3 class="text-xl font-bold text-gray-700 inline-block">부록: 지역별 장비 현황</h3>
                                 <a href="https://docs.google.com/spreadsheets/d/19eKY1TjrxigK77KRhkQFhxMPj6dFy1UZ8WUvV7Nt-pM/edit?gid=1154458081#gid=1154458081" target="_blank" class="text-blue-500 hover:underline text-sm ml-2">자세히 보기 →</a>
                             </div>
                             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
@@ -375,12 +463,10 @@
 
 
     <script>
-        const equipmentData = [{ location: 'Prague', type: '핵심', no: 'A,B,C', product: 'Camera', description: 'PTZ 렌즈, 미러리스 바디/렌즈' },{ location: 'Prague', type: '핵심', no: 'D', product: 'Camera', description: '짐벌, 컨트롤러, 무선 송수신기 등' },{ location: 'Prague', type: '잔류', no: '1,2,3', product: 'Camera', description: '삼각대, 돌리, 조명 스탠드' },{ location: 'CYPRUS', type: '핵심', no: '1-7', product: 'Camera', description: 'PTZ 카메라 바디' },{ location: 'CYPRUS', type: '핵심', no: '19-25', product: 'Tech', description: '스위처, 오디오/네트워크 장비' },{ location: 'CYPRUS', type: '잔류', no: '8-17', product: 'Camera', description: '충전기, 배터리, 케이블, 매직암 등' }];
-        const scenarioData = {A:{title:'Scenario A: 지역 거점 최적화',strategy:'향후 프로젝트가 불확실하거나, 키프로스에서 연달아 진행될 가능성에 대비. 고가의 핵심 장비만 한국으로 회수하고 나머지는 현지에 유지하여 운송 비용을 최소화하고 효율을 극대화한다.',branches:[{id:'A-1',name:'Option 1: ATA 까르네 이용',phase1:'<div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="text-center">🇨🇿 프라하<br><span class="text-xs text-red-600">(까르네)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇾 키프로스</div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇰🇷 한국</div></div>',phase2_title:'Phase 2: 프로젝트 종료 후 (까르네 의무로 인한 분산)',phase2_result:'<ul class="space-y-2 list-inside list-disc"><li>프라하 장비 → 🇨🇿 프라하 복귀 (까르네 의무)</li><li>키프로스 핵심 장비 → 🇰🇷 한국 운송</li><li>키프로스 잔류 장비 → 🇨🇾 키프로스 잔류</li></ul>',conclusion:'<div class="mt-4 p-3 bg-red-100 text-red-800 rounded-lg text-center font-bold">최종 결과: 물류 거점이 3곳으로 분산 유지. 목표 달성 실패.</div>',pros:['검증된 프로세스','한국팀 이동 동선 단순화'],cons:['까르네 규정상 목표 달성 불가','물류 비효율 유지']},{id:'A-2',name:'Option 2: 직접 운송 (팀 경유)',phase1:'<div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="text-center">🇰🇷 한국<br><span class="text-xs text-blue-600">(팀 출발)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇿 프라하<br><span class="text-xs text-blue-600">(경유 픽업)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇾 키프로스</div></div>',phase2_title:'Phase 2: 프로젝트 종료 후 (거점 최적화)',phase2_result:'<ul class="space-y-2 list-inside list-disc"><li>(구)프라하 + (구)키프로스 핵심 장비 → 🇰🇷 한국 운송 (통합)</li><li>(구)프라하 + (구)키프로스 잔류 장비 → 🇨🇾 키프로스 잔류 (통합)</li></ul>',conclusion:'<div class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg text-center font-bold">최종 결과: 물류 거점이 한국(핵심)과 키프로스(잔류) 2곳으로 최적화. 목표 달성 성공.</div>',pros:['시나리오 목표 달성 가능','운송 비용 최소화 (장기)'],cons:['팀 이동 동선 복잡','초기 경유 비용 발생']}]},B:{title:'Scenario B: 글로벌 운영 베이스 구축',strategy:'이번 기회에 프라하와 키프로스의 모든 장비를 한국으로 들여와, 물류를 일원화하고 향후 모든 프로젝트의 물류 출발점을 한국에서 시작한다.',phase1:'<div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="text-center">🇰🇷 한국<br><span class="text-xs text-blue-600">(팀 출발 & 장비)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇿 프라하<br><span class="text-xs text-blue-600">(경유 픽업)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇾 키프로스</div></div>',phase2_title:'Phase 2: 프로젝트 종료 후 (한국으로 완전 통합)',phase2_result:'<p>(구)프라하 + (구)키프로스 + (구)한국 장비 → 🇰🇷 한국 운송 (전체 통합)</p>',conclusion:'<div class="mt-4 p-3 bg-green-100 text-green-800 rounded-lg text-center font-bold">최종 결과: 모든 장비가 한국으로 통합되어 완벽한 물류 일원화 달성.</div>',pros:['완벽한 물류 일원화','최고 수준의 유연성','장기적 비용 절감'],cons:['초기 운송 비용 가장 높음','대규모 물류 이동 필요']},C:{title:'Scenario C: 기존 위치 복귀 (Status Quo)',strategy:'현재의 분산된 물류 시스템을 그대로 유지한다. 프로젝트 종료 후 모든 장비는 원래 있던 위치(프라하, 키프로스, 한국)로 복귀한다.',phase1:'<div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="text-center">🇨🇿 프라하<br><span class="text-xs text-red-600">(까르네)</span></div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇨🇾 키프로스</div><div class="w-full md:w-auto flex-grow flow-arrow"></div><div class="text-center">🇰🇷 한국</div></div>',phase2_title:'Phase 2: 프로젝트 종료 후 (원위치 복귀)',phase2_result:'<ul class="space-y-2 list-inside list-disc"><li>프라하 장비 → 🇨🇿 프라하 복귀</li><li>키프로스 장비 → 🇨🇾 키프로스 잔류</li><li>한국 장비 → 🇰🇷 한국 복귀</li></ul>',conclusion:'<div class="mt-4 p-3 bg-yellow-100 text-yellow-800 rounded-lg text-center font-bold">최종 결과: 현상 유지. 장기적인 물류 개선은 이루어지지 않음.</div>',pros:['검증된 프로세스','운영 리스크 적음'],cons:['고비용 구조 유지','물류 비효율 유지','장기적 목표 달성 불가']}};
-        let currentScenario = 'A';
-        let currentFilters = { loc: 'all', type: 'all' };
-
         document.addEventListener('DOMContentLoaded', function() {
+            const equipmentData = [{ location: 'Prague', type: '핵심', no: 'A,B,C', product: 'Camera', description: 'PTZ 렌즈, 미러리스 바디/렌즈' },{ location: 'Prague', type: '핵심', no: 'D', product: 'Camera', description: '짐벌, 컨트롤러, 무선 송수신기 등' },{ location: 'Prague', type: '잔류', no: '1,2,3', product: 'Camera', description: '삼각대, 돌리, 조명 스탠드' },{ location: 'CYPRUS', type: '핵심', no: '1-7', product: 'Camera', description: 'PTZ 카메라 바디' },{ location: 'CYPRUS', type: '핵심', no: '19-25', product: 'Tech', description: '스위처, 오디오/네트워크 장비' },{ location: 'CYPRUS', type: '잔류', no: '8-17', product: 'Camera', description: '충전기, 배터리, 케이블, 매직암 등' }];
+            let currentFilters = { loc: 'all', type: 'all' };
+
             // Set dynamic date
             const today = new Date();
             const year = today.getFullYear();
@@ -490,58 +576,6 @@
             });
 
             // Logistics Dashboard Logic
-            const scenarioContent = document.getElementById('scenario-content');
-            const btnA = document.getElementById('btn-scenario-A');
-            const btnB = document.getElementById('btn-scenario-B');
-            const btnC = document.getElementById('btn-scenario-C');
-            
-            function renderScenario(scenarioId) {
-                if (!scenarioContent) return;
-                currentScenario = scenarioId;
-                const data = scenarioData[scenarioId];
-                let branchHtml = '';
-
-                if (data.branches) {
-                    branchHtml = `<div class="flex justify-center gap-4 my-4">${data.branches.map((branch, index) => `<button class="branch-btn px-4 py-2 rounded-lg text-sm ${index === 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'}" data-scenario="${scenarioId}" data-branch="${branch.id}">${branch.name}</button>`).join('')}</div><div id="branch-content-container"></div>`;
-                } else {
-                    branchHtml = `<h4 class="text-lg font-semibold mt-6 mb-2 text-gray-700">Phase 1: 키프로스 대회 준비</h4><div class="p-4 border rounded-lg bg-gray-50">${data.phase1}</div><h4 class="text-lg font-semibold mt-6 mb-2 text-gray-700">${data.phase2_title}</h4><div class="p-4 border rounded-lg bg-gray-50">${data.phase2_result}</div>${data.conclusion}<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6"><div><h5 class="font-bold text-green-600 mb-2">장점 (Pros)</h5><ul class="space-y-1">${data.pros.map(p => `<li class="flex items-start"><span class="text-green-500 mr-2">✔️</span><span>${p}</span></li>`).join('')}</ul></div><div><h5 class="font-bold text-red-600 mb-2">단점 (Cons)</h5><ul class="space-y-1">${data.cons.map(c => `<li class="flex items-start"><span class="text-red-500 mr-2">❌</span><span>${c}</span></li>`).join('')}</ul></div></div>`;
-                }
-
-                scenarioContent.innerHTML = `<h3 class="text-2xl font-bold text-gray-800 text-center">${data.title}</h3><p class="mt-2 text-center text-gray-600 mb-6">${data.strategy}</p>${branchHtml}`;
-
-                if (data.branches) {
-                    renderBranch(scenarioId, 'A-2'); 
-                    const branchBtns = document.querySelectorAll('.branch-btn');
-                    branchBtns.forEach(btn => {
-                        btn.addEventListener('click', (e) => {
-                            const selectedBranch = e.currentTarget.dataset.branch;
-                            renderBranch(scenarioId, selectedBranch);
-                            branchBtns.forEach(b => b.classList.remove('bg-blue-500', 'text-white'));
-                            e.currentTarget.classList.add('bg-blue-500', 'text-white');
-                        });
-                    });
-                }
-                updateActiveButton();
-            }
-
-            function renderBranch(scenarioId, branchId) {
-                const branchContainer = document.getElementById('branch-content-container');
-                const branchData = scenarioData[scenarioId].branches.find(b => b.id === branchId);
-                if(branchContainer && branchData) {
-                    branchContainer.innerHTML = `<h4 class="text-lg font-semibold mt-6 mb-2 text-gray-700">Phase 1: 키프로스 대회 준비 (${branchData.name})</h4><div class="p-4 border rounded-lg bg-gray-50">${branchData.phase1}</div><h4 class="text-lg font-semibold mt-6 mb-2 text-gray-700">${branchData.phase2_title}</h4><div class="p-4 border rounded-lg bg-gray-50">${branchData.phase2_result}</div>${branchData.conclusion}<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6"><div><h5 class="font-bold text-green-600 mb-2">장점 (Pros)</h5><ul class="space-y-1">${branchData.pros.map(p => `<li class="flex items-start"><span class="text-green-500 mr-2">✔️</span><span>${p}</span></li>`).join('')}</ul></div><div><h5 class="font-bold text-red-600 mb-2">단점 (Cons)</h5><ul class="space-y-1">${branchData.cons.map(c => `<li class="flex items-start"><span class="text-red-500 mr-2">❌</span><span>${c}</span></li>`).join('')}</ul></div></div>`;
-                }
-            }
-
-            function updateActiveButton() {
-                document.querySelectorAll('.scenario-btn').forEach(btn => btn.classList.remove('active'));
-                const activeBtn = document.getElementById(`btn-scenario-${currentScenario}`);
-                if (activeBtn) activeBtn.classList.add('active');
-            }
-
-            if(btnA) btnA.addEventListener('click', () => renderScenario('A'));
-            if(btnB) btnB.addEventListener('click', () => renderScenario('B'));
-            if(btnC) btnC.addEventListener('click', () => renderScenario('C'));
-
             function renderTable() {
                 const tableBody = document.getElementById('equipment-table-body');
                 if(!tableBody) return;
@@ -572,11 +606,9 @@
             }));
             
             if (document.getElementById('logistics')) {
-                renderScenario('A');
                 renderTable();
             }
         });
     </script>
 </body>
 </html>
-�
