@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.44</title>
+    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.45</title>
     
     <!-- Chosen Palette: Calm Neutral Professional -->
     <!-- Application Structure Plan: 기획서의 논리적 흐름을 그대로 따르는 단일 페이지 대시보드 형식으로 설계했습니다. 사용자는 스크롤을 통해 '업무 방식 개선 → 현황 진단 → 핵심 과제 → 안정성 강화 → 운영 프로세스' 순으로 자연스럽게 계획을 파악할 수 있습니다. 각 섹션은 정보 카드, 시각적 다이어그램, 인터랙티브 탭과 같은 요소를 사용하여 정적인 문서보다 높은 가독성과 정보 전달력을 갖도록 구성했습니다. 이를 통해 사용자는 계획의 전체적인 맥락과 세부 실행 방안을 더 쉽게 이해하고 탐색할 수 있습니다. -->
@@ -184,7 +184,7 @@
 
         <header class="text-center my-8 md:my-12">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 whitespace-nowrap">2025 WSOP SC CYPRUS 카메라 파트 전략</h1>
-            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.44</p>
+            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.45</p>
             <p class="mt-4 text-lg text-gray-600">5월 MPP 프로젝트 리뷰 기반, 10월 SC 프로젝트 실행 계획</p>
         </header>
 
@@ -320,7 +320,7 @@
 
     <!-- Quality Comparison Modal -->
     <div id="quality-modal" class="hidden fixed inset-0 bg-gray-900/80 z-[60] flex items-center justify-center p-4 backdrop-blur-sm">
-        <div id="quality-modal-content-box" class="bg-white w-full max-w-7xl h-full max-h-[90vh] rounded-2xl shadow-2xl flex flex-col relative modal-enter">
+        <div id="quality-modal-content-box" class="bg-white w-full max-w-[1920px] h-full max-h-[90vh] rounded-2xl shadow-2xl flex flex-col relative modal-enter">
             <header class="p-4 border-b flex justify-between items-center flex-shrink-0">
                 <h2 class="text-xl font-bold text-gray-800">프레임 퀄리티 비교 분석</h2>
                 <button id="quality-modal-close-btn" class="text-gray-500 hover:text-gray-800" aria-label="닫기">
@@ -345,10 +345,20 @@
         const projectData = {
             qualityComparison: {
                 // Helper function to generate placeholder data
-                _createPlaceholderData(category, index) {
+                _createPlaceholderData(category, type, index) {
+                     const colors = {
+                        previous: '6B7280', // gray-500
+                        target: '3B82F6',   // blue-500
+                        current: '10B981'   // emerald-500
+                    };
+                    const typeText = {
+                        previous: 'Prev',
+                        target: 'Target',
+                        current: 'Current'
+                    };
                     return {
-                        img: `https://placehold.co/800x450/${index === 0 ? '6B7280' : index === 1 ? '3B82F6' : '10B981'}/FFFFFF?text=${category}+${['Prev', 'Target', 'Current'][index]}`,
-                        caption: `${category} ${['전년', '목표', '현재'][index]} 이미지 설명`
+                        img: `https://placehold.co/800x450/${colors[type]}/FFFFFF?text=${category}+${typeText[type]}+${index + 1}`,
+                        caption: `${category} ${typeText[type]} 이미지 #${index + 1} 설명`
                     };
                 },
                 
@@ -356,9 +366,9 @@
                 _generateCategory(name) {
                     const cat = { previous: [], target: [], current: [] };
                     for (let i = 0; i < 3; i++) {
-                        cat.previous.push(this._createPlaceholderData(name, 0));
-                        cat.target.push(this._createPlaceholderData(name, 1));
-                        cat.current.push(this._createPlaceholderData(name, 2));
+                        cat.previous.push(this._createPlaceholderData(name, 'previous', i));
+                        cat.target.push(this._createPlaceholderData(name, 'target', i));
+                        cat.current.push(this._createPlaceholderData(name, 'current', i));
                     }
                     return cat;
                 },
@@ -367,7 +377,7 @@
                 initQualityData() {
                     const categories = ['풀샷', '포지션 1', '포지션 2', '포지션 3', '포지션 4', '포지션 5', '포지션 6', '포지션 7', '포지션 8'];
                     categories.forEach(catName => {
-                        this[catName] = this._generateCategory(catName);
+                        this[catName] = this._generateCategory(catName.replace(' ', ''));
                     });
                     delete this._createPlaceholderData;
                     delete this._generateCategory;
