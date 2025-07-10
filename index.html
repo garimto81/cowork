@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.45</title>
+    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.47</title>
     
     <!-- Chosen Palette: Calm Neutral Professional -->
     <!-- Application Structure Plan: 기획서의 논리적 흐름을 그대로 따르는 단일 페이지 대시보드 형식으로 설계했습니다. 사용자는 스크롤을 통해 '업무 방식 개선 → 현황 진단 → 핵심 과제 → 안정성 강화 → 운영 프로세스' 순으로 자연스럽게 계획을 파악할 수 있습니다. 각 섹션은 정보 카드, 시각적 다이어그램, 인터랙티브 탭과 같은 요소를 사용하여 정적인 문서보다 높은 가독성과 정보 전달력을 갖도록 구성했습니다. 이를 통해 사용자는 계획의 전체적인 맥락과 세부 실행 방안을 더 쉽게 이해하고 탐색할 수 있습니다. -->
@@ -129,24 +129,6 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Quality Modal Styles */
-        #quality-modal-tabs .tab-btn {
-            white-space: nowrap;
-            padding: 0.5rem 1rem;
-            font-weight: 600;
-            color: #6B7281; /* gray-500 */
-            border-radius: 0.5rem;
-            transition: color 0.2s ease, background-color 0.2s ease;
-            border-bottom: none;
-        }
-        #quality-modal-tabs .tab-btn:hover {
-            background-color: #F3F4F6; /* gray-100 */
-            color: #111827; /* gray-900 */
-        }
-        #quality-modal-tabs .tab-btn.active {
-            background-color: #3B82F6; /* blue-500 */
-            color: white;
-        }
         body.modal-open {
             overflow: hidden;
         }
@@ -184,7 +166,7 @@
 
         <header class="text-center my-8 md:my-12">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 whitespace-nowrap">2025 WSOP SC CYPRUS 카메라 파트 전략</h1>
-            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.45</p>
+            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.47</p>
             <p class="mt-4 text-lg text-gray-600">5월 MPP 프로젝트 리뷰 기반, 10월 SC 프로젝트 실행 계획</p>
         </header>
 
@@ -211,7 +193,7 @@
             
             <!-- 핵심 목표 -->
             <section id="strategy">
-                <h2 class="section-title text-center">WSOP SC 카메라 파트 목표</h2>
+                <h2 class="section-title text-center">WSOP SC 카메라 파트 목표: 퀄리티 및 안정성</h2>
                 <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     <div id="open-quality-modal" role="button" tabindex="0" class="card p-8 rounded-xl shadow-lg cursor-pointer">
                         <div class="flex items-center mb-4"><span class="text-3xl mr-4">💎</span><h3 class="text-2xl font-bold text-gray-800">프레임 퀄리티 향상</h3></div>
@@ -242,7 +224,7 @@
 
             <!-- 장비 계획 -->
             <section id="setup">
-                <h2 class="section-title text-center">장비 계획 : MPP → WSOP SC</h2>
+                <h2 class="section-title text-center">장비 계획: MPP → WSOP SC</h2>
                 <div class="bg-white p-4 sm:p-8 rounded-xl shadow-lg border border-gray-200">
                     <p class="text-center text-gray-600 mb-8">5월 MPP 프로젝트의 경험을 바탕으로, 10월 WSOP SC에서는 카메라 시스템을 단계적으로 발전시켜 A컷 품질을 극대화합니다.</p>
                     <div class="flex justify-center border-b border-gray-200 mb-8" role="tablist" aria-label="장비 구성">
@@ -258,9 +240,9 @@
                 </div>
             </section>
             
-            <!-- 출장 운영 프로세스 정립 -->
+            <!-- 운영 시나리오 -->
             <section id="process">
-                <h2 class="section-title text-center">출장 운영 시나리오</h2>
+                <h2 class="section-title text-center">운영 시나리오</h2>
                 <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-gray-200">
                     <p class="text-center text-gray-600 mb-8">각 시나리오를 선택하여 인원 편제와 담당 공간 구성을 확인하세요.</p>
                     <div class="flex flex-wrap justify-center border-b border-gray-200 mb-8" role="tablist" aria-label="운영 시나리오">
@@ -273,7 +255,7 @@
             </section>
             
             <section id="logistics">
-                <h2 class="section-title text-center">물류 운영 시나리오</h2>
+                <h2 class="section-title text-center">물류 시나리오</h2>
                  <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8 border border-gray-200">
                      <div id="logistics-main">
                          <section id="logistics-phase1" class="mb-12">
@@ -322,14 +304,11 @@
     <div id="quality-modal" class="hidden fixed inset-0 bg-gray-900/80 z-[60] flex items-center justify-center p-4 backdrop-blur-sm">
         <div id="quality-modal-content-box" class="bg-white w-full max-w-[1920px] h-full max-h-[90vh] rounded-2xl shadow-2xl flex flex-col relative modal-enter">
             <header class="p-4 border-b flex justify-between items-center flex-shrink-0">
-                <h2 class="text-xl font-bold text-gray-800">프레임 퀄리티 비교 분석</h2>
+                <h2 class="text-xl font-bold text-gray-800">프레임 퀄리티 비교 분석: 카메라 파트</h2>
                 <button id="quality-modal-close-btn" class="text-gray-500 hover:text-gray-800" aria-label="닫기">
                     <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </header>
-            <nav id="quality-modal-tabs" class="p-2 border-b flex-shrink-0 flex space-x-1 overflow-x-auto">
-                <!-- Tabs will be rendered here by JS -->
-            </nav>
             <main id="quality-modal-grid" class="p-4 md:p-6 flex-grow overflow-y-auto">
                 <!-- Comparison grid will be rendered here by JS -->
             </main>
@@ -345,7 +324,7 @@
         const projectData = {
             qualityComparison: {
                 // Helper function to generate placeholder data
-                _createPlaceholderData(category, type, index) {
+                _createPlaceholderData(type, index) {
                      const colors = {
                         previous: '6B7280', // gray-500
                         target: '3B82F6',   // blue-500
@@ -357,28 +336,25 @@
                         current: 'Current'
                     };
                     return {
-                        img: `https://placehold.co/800x450/${colors[type]}/FFFFFF?text=${category}+${typeText[type]}+${index + 1}`,
-                        caption: `${category} ${typeText[type]} 이미지 #${index + 1} 설명`
+                        img: `https://placehold.co/800x450/${colors[type]}/FFFFFF?text=${typeText[type]}+Shot+${index + 1}`,
+                        caption: `${typeText[type]} 이미지 #${index + 1} 설명`
                     };
                 },
                 
                 // Function to generate a full category object
-                _generateCategory(name) {
+                _generateCategory() {
                     const cat = { previous: [], target: [], current: [] };
                     for (let i = 0; i < 3; i++) {
-                        cat.previous.push(this._createPlaceholderData(name, 'previous', i));
-                        cat.target.push(this._createPlaceholderData(name, 'target', i));
-                        cat.current.push(this._createPlaceholderData(name, 'current', i));
+                        cat.previous.push(this._createPlaceholderData('previous', i));
+                        cat.target.push(this._createPlaceholderData('target', i));
+                        cat.current.push(this._createPlaceholderData('current', i));
                     }
                     return cat;
                 },
 
                 // Initialize all categories
                 initQualityData() {
-                    const categories = ['풀샷', '포지션 1', '포지션 2', '포지션 3', '포지션 4', '포지션 5', '포지션 6', '포지션 7', '포지션 8'];
-                    categories.forEach(catName => {
-                        this[catName] = this._generateCategory(catName.replace(' ', ''));
-                    });
+                    this.data = this._generateCategory();
                     delete this._createPlaceholderData;
                     delete this._generateCategory;
                     delete this.initQualityData;
@@ -425,8 +401,7 @@
             // State management
             state: {
                 filters: { loc: 'all', type: 'all' },
-                selectedLogisticsP1: 'direct',
-                currentQualityCategory: null
+                selectedLogisticsP1: 'direct'
             },
 
             // Initialization
@@ -599,8 +574,7 @@
                     // Quality Modal
                     if (e.target.closest('#open-quality-modal')) this.openQualityModal();
                     if (e.target.closest('#quality-modal-close-btn') || e.target.id === 'quality-modal') this.closeQualityModal();
-                    if (e.target.closest('#quality-modal-tabs')) this.handleQualityTabClick(e);
-
+                    
                     // Logistics Phase 1 Selection
                     const logisticsCard = e.target.closest('#phase1-container .logistics-card');
                     if (logisticsCard) this.handleLogisticsP1Select(logisticsCard);
@@ -697,10 +671,6 @@
                 const modal = document.getElementById('quality-modal');
                 modal.classList.remove('hidden');
                 document.body.classList.add('modal-open');
-                
-                if (!this.state.currentQualityCategory) {
-                    this.state.currentQualityCategory = Object.keys(projectData.qualityComparison)[0];
-                }
                 this.renderQualityModal();
             },
 
@@ -710,33 +680,15 @@
                 document.body.classList.remove('modal-open');
             },
 
-            handleQualityTabClick(e) {
-                const button = e.target.closest('button');
-                if (!button) return;
-                
-                this.state.currentQualityCategory = button.dataset.category;
-                this.renderQualityModal();
-            },
-
             renderQualityModal() {
-                const tabsContainer = document.getElementById('quality-modal-tabs');
                 const gridContainer = document.getElementById('quality-modal-grid');
-                const categories = Object.keys(projectData.qualityComparison);
+                const activeData = projectData.qualityComparison.data;
                 
-                // Render tabs
-                tabsContainer.innerHTML = categories.map(cat => `
-                    <button class="tab-btn ${this.state.currentQualityCategory === cat ? 'active' : ''}" data-category="${cat}">
-                        ${cat}
-                    </button>
-                `).join('');
-
-                // Render grid for the active category
-                const activeData = projectData.qualityComparison[this.state.currentQualityCategory];
                 if (activeData) {
-                    const renderImageRow = (title, color, data) => `
-                        <div class="p-4 bg-gray-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-${color}-600 mb-4">${title}</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                     const renderImageColumn = (title, color, data) => `
+                        <div class="p-4 bg-gray-50 rounded-lg flex flex-col">
+                            <h3 class="text-lg font-bold text-${color}-600 mb-4 text-center">${title}</h3>
+                            <div class="space-y-4 flex-grow">
                                 ${data.map(item => `
                                     <div>
                                         <img src="${item.img}" alt="${title}" class="w-full h-auto rounded-md shadow-md mb-2">
@@ -748,14 +700,14 @@
                     `;
 
                     gridContainer.innerHTML = `
-                        <div class="space-y-6">
-                            ${renderImageRow('🗓️ 전년 레퍼런스', 'gray', activeData.previous)}
-                            ${renderImageRow('🏆 목표 레퍼런스', 'blue', activeData.target)}
-                            ${renderImageRow('GGP 현재', 'green', activeData.current)}
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-full">
+                            ${renderImageColumn('🗓️ 전년 레퍼런스', 'gray', activeData.previous)}
+                            ${renderImageColumn('🏆 목표 레퍼런스', 'blue', activeData.target)}
+                            ${renderImageColumn('GGP 현재', 'green', activeData.current)}
                         </div>
                     `;
                 } else {
-                    gridContainer.innerHTML = `<div class="text-center py-16 text-gray-500">이 카테고리에 대한 비교 데이터가 아직 없습니다.</div>`;
+                    gridContainer.innerHTML = `<div class="text-center py-16 text-gray-500">비교 데이터가 없습니다.</div>`;
                 }
             }
         };
