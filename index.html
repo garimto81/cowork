@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.47</title>
+    <title>2025 WSOP SC CYPRUS 카메라 파트 전략 Ver 0.48</title>
     
     <!-- Chosen Palette: Calm Neutral Professional -->
     <!-- Application Structure Plan: 기획서의 논리적 흐름을 그대로 따르는 단일 페이지 대시보드 형식으로 설계했습니다. 사용자는 스크롤을 통해 '업무 방식 개선 → 현황 진단 → 핵심 과제 → 안정성 강화 → 운영 프로세스' 순으로 자연스럽게 계획을 파악할 수 있습니다. 각 섹션은 정보 카드, 시각적 다이어그램, 인터랙티브 탭과 같은 요소를 사용하여 정적인 문서보다 높은 가독성과 정보 전달력을 갖도록 구성했습니다. 이를 통해 사용자는 계획의 전체적인 맥락과 세부 실행 방안을 더 쉽게 이해하고 탐색할 수 있습니다. -->
@@ -166,7 +166,7 @@
 
         <header class="text-center my-8 md:my-12">
             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 whitespace-nowrap">2025 WSOP SC CYPRUS 카메라 파트 전략</h1>
-            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.47</p>
+            <p class="text-2xl text-blue-500 font-semibold mt-2">Ver 0.48</p>
             <p class="mt-4 text-lg text-gray-600">5월 MPP 프로젝트 리뷰 기반, 10월 SC 프로젝트 실행 계획</p>
         </header>
 
@@ -323,44 +323,24 @@
         // Centralized data for dynamic rendering
         const projectData = {
             qualityComparison: {
-                // Helper function to generate placeholder data
-                _createPlaceholderData(type, index) {
-                     const colors = {
-                        previous: '6B7280', // gray-500
-                        target: '3B82F6',   // blue-500
-                        current: '10B981'   // emerald-500
-                    };
-                    const typeText = {
-                        previous: 'Prev',
-                        target: 'Target',
-                        current: 'Current'
-                    };
-                    return {
-                        img: `https://placehold.co/800x450/${colors[type]}/FFFFFF?text=${typeText[type]}+Shot+${index + 1}`,
-                        caption: `${typeText[type]} 이미지 #${index + 1} 설명`
-                    };
-                },
-                
-                // Function to generate a full category object
-                _generateCategory() {
-                    const cat = { previous: [], target: [], current: [] };
-                    for (let i = 0; i < 3; i++) {
-                        cat.previous.push(this._createPlaceholderData('previous', i));
-                        cat.target.push(this._createPlaceholderData('target', i));
-                        cat.current.push(this._createPlaceholderData('current', i));
-                    }
-                    return cat;
-                },
-
-                // Initialize all categories
-                initQualityData() {
-                    this.data = this._generateCategory();
-                    delete this._createPlaceholderData;
-                    delete this._generateCategory;
-                    delete this.initQualityData;
-                    return this;
+                data: {
+                    previous: [
+                        { img: "https://placehold.co/800x450/6B7280/FFFFFF?text=Prev+Shot+1", caption: "전년 이미지 #1 설명" },
+                        { img: "https://placehold.co/800x450/6B7280/FFFFFF?text=Prev+Shot+2", caption: "전년 이미지 #2 설명" },
+                        { img: "https://placehold.co/800x450/6B7280/FFFFFF?text=Prev+Shot+3", caption: "전년 이미지 #3 설명" }
+                    ],
+                    target: [
+                        { img: "https://placehold.co/800x450/3B82F6/FFFFFF?text=Target+Shot+1", caption: "목표 이미지 #1 설명" },
+                        { img: "https://placehold.co/800x450/3B82F6/FFFFFF?text=Target+Shot+2", caption: "목표 이미지 #2 설명" },
+                        { img: "https://placehold.co/800x450/3B82F6/FFFFFF?text=Target+Shot+3", caption: "목표 이미지 #3 설명" }
+                    ],
+                    current: [
+                        { img: "https://placehold.co/800x450/10B981/FFFFFF?text=Current+Shot+1", caption: "현재 이미지 #1 설명" },
+                        { img: "https://placehold.co/800x450/10B981/FFFFFF?text=Current+Shot+2", caption: "현재 이미지 #2 설명" },
+                        { img: "https://placehold.co/800x450/10B981/FFFFFF?text=Current+Shot+3", caption: "현재 이미지 #3 설명" }
+                    ]
                 }
-            }.initQualityData(),
+            },
             roadmap: [
                 { month: '6월', phase: 'Phase 1', title: '분석 및 기반 다지기', desc: '5월 MPP 출장에서 발생한 14가지 현장 이슈를 분석 및 해결하고, 연구를 통해 개선 지점을 도출하는 데 집중합니다.', goal: '문제점 명확화 및 개선 방향 수립', color: 'gray', link: 'https://garimto81.github.io/ggm/' },
                 { month: '7월', phase: 'Phase 2', title: '퀄리티 집중 강화', desc: '프레임 퀄리티 R&D에 집중하여, 외부 프로덕션(카라펫)과 대등하거나 그 이상의 결과물을 도출하는 것을 목표로 합니다.', goal: '퀄리티 비교 우위 확보 및 결론 도출', color: 'blue', link: 'https://garimto81.github.io/arrangement_web/' },
